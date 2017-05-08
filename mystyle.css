@@ -1,0 +1,111 @@
+GtkButton {
+    background-image: none;
+    background-color: white;
+    border-radius: 0px;
+    border-color: black;
+}
+
+#myButton_numbers{
+    background-image: none;
+    background-color: white;
+    border-top-width: 20px;
+    border-color: gray;
+}
+
+#myButton_white_nospace{
+    background-image: none;
+    background-color: white;
+}
+
+#myButton_white_rightspace{
+    background-image: none;
+    background-color: white;
+    border-right-color: black;
+    border-right-width: 5px;
+}
+
+#myButton_white_bottomspace{
+    background-image: none;
+    background-color: white;
+    border-bottom-color: black;
+    border-bottom-width: 5px;
+}
+
+#myButton_white_intersectionspace{
+    background-image: none;
+    background-color: white;
+    border-bottom-color: black;
+    border-right-color: black;
+    border-bottom-width: 5px;
+    border-right-width: 5px;
+}
+
+#myButton_white_nospace_clicked{
+    background-image: none;
+    background-color: #70ee70;
+}
+
+#myButton_white_rightspace_clicked{
+    background-image: none;
+    background-color: #70ee70;
+    border-right-color: black;
+    border-right-width: 5px;
+}
+
+#myButton_white_bottomspace_clicked{
+    background-image: none;
+    background-color: #70ee70;
+    border-bottom-color: black;
+    border-bottom-width: 5px;
+}
+
+#myButton_white_intersectionspace_clicked{
+    background-image: none;
+    background-color: #70ee70;
+    border-bottom-color: black;
+    border-right-color: black;
+    border-bottom-width: 5px;
+    border-right-width: 5px;
+}
+
+#myButton_white_nospace_lock{
+    background-image: none;
+    background-color: #ee9090;
+    color: white;
+}
+
+#myButton_white_rightspace_lock{
+    background-image: none;
+    background-color: #ee9090;
+    color: white;
+    border-right-color: black;
+    border-right-width: 5px;
+}
+
+#myButton_white_bottomspace_lock{
+    background-image: none;
+    background-color: #ee9090;
+    color: white;
+    border-bottom-color: black;
+    border-bottom-width: 5px;
+}
+
+#myButton_white_intersectionspace_lock{
+    background-image: none;
+    background-color: #ee9090;
+    color: white;
+    border-bottom-color: black;
+    border-right-color: black;
+    border-bottom-width: 5px;
+    border-right-width: 5px;
+}
+
+
+GtkButton:hover,
+#myButton_white_nospace:hover,
+#myButton_white_rightspace:hover,
+#myButton_white_bottomspace:hover,
+#myButton_white_intersectionspace:hover
+{
+    background-color: #70ee70;
+}
