@@ -22,7 +22,8 @@
 
 gpointer last = NULL;
 GtkWidget *lastWidget;
-char name[255];
+char GameName[255];
+char FileName[255];
 
 Field Grid[9][9];
 
@@ -58,17 +59,18 @@ void gameManagement(Field grid[][9], FILE *myFile)
 {
     
     printf("Spielname: ");
-    scanf("%s",name);
+    scanf("%s",GameName);
+    strcpy(FileName,GameName);
 
-    myFile = fopen(strcat(name,".txt"), "r+");
+    myFile = fopen(strcat(FileName,".txt"), "r+");
     if(myFile == NULL) //if file does not exist, create it
     {
-       myFile = fopen(name, "wb");
+       myFile = fopen(FileName, "wb");
        // genrator here bum bang done
-       generateGrid(grid,20,name);
-       setLocked(grid);
-       gridToFile(grid,name);
-       myFile = fopen(name, "r+");
+       generateGrid(grid,20,FileName);
+       //setLocked(grid);
+       gridToFile(grid,FileName);
+       myFile = fopen(FileName, "r+");
     }
     readGridWithFile(grid,myFile);
 }
@@ -330,7 +332,7 @@ void setKeyNumber(guint keyval){
         strcpy(Grid[x][y].show, show);
         gtk_button_set_label(GTK_BUTTON(Grid[x][y].button), "");
     }
-    gridToFile(Grid, name);
+    gridToFile(Grid, FileName);
 }
 
 void setStyleClicked(int x, int y, bool clicked){

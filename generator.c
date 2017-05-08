@@ -23,6 +23,7 @@ void generateGrid(Field grid[][9], int numFields, char *gameName){
             insertValue(grid,rand()%9+1,x+1,y+1);
 
             if(rowCheckField(grid,x,y) && culCheckField(grid,x,y) && squareCheckField(grid,x,y)){
+                grid[y][x].fixed = true;
                 filled++;
             }else{
                 grid[y][x].value = 0;
