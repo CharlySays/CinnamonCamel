@@ -19,7 +19,6 @@ void generateGrid(Field grid[][9], int numFields, char *gameName){
         x = rand() % 9;
         y = rand() % 9;
 
-        //printf("%d:%d",y+1,x+1);
         if(grid[y][x].value == 0){
             insertValue(grid,rand()%9+1,x+1,y+1);
 

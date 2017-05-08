@@ -1,7 +1,7 @@
-#include "gameManagement.h"
+    #include "gameManagement.h"
 
 void gridToFile(Field grid[][9], char* fileName){
-    char output[255];
+    char output[255] = "\0";
     char temp[255];
     strcpy(temp,"\0");
     for(int i=0;i<9;i++){

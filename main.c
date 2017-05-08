@@ -22,8 +22,9 @@
 
 gpointer last = NULL;
 GtkWidget *lastWidget;
+char name[255];
 
-Field tempGrid[9][9];
+Field Grid[9][9];
 
 void gameManagement(Field grid[][9], FILE *myFile);
 void myCss(void);
@@ -55,7 +56,7 @@ int main (int    argc, char **argv)
 
 void gameManagement(Field grid[][9], FILE *myFile)
 {
-    char name[255];
+    
     printf("Spielname: ");
     scanf("%s",name);
 
@@ -91,8 +92,7 @@ void myCss(void)
 }
 
 
-void
-on_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data)
+void on_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 {
     int lastnum = GPOINTER_TO_INT(last);
     int y = getJ(lastnum);
@@ -101,52 +101,52 @@ on_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data)
     if(event->keyval == 65361 /*left_arrow*/){
         if(GPOINTER_TO_INT(last) > 10){
             int offset = 1;
-            while(x - offset >= 0 && tempGrid[x - offset][y].fixed) offset++;
+            while(x - offset >= 0 && Grid[x - offset][y].fixed) offset++;
             if(x - offset < 0) return;
                 
             setStyleClicked(x,y,false);
             setStyleClicked(x - offset, y, true);
             
-            lastWidget = tempGrid[x-offset][y].button;
+            lastWidget = Grid[x-offset][y].button;
             last -= offset*10;   
         }
     }
     else if(event->keyval == 65364 /*down_arrow*/){
         if(GPOINTER_TO_INT(last)%10 != 9){
             int offset = 1;
-            while(y + offset <= 8 && tempGrid[x][y+offset].fixed) offset++;
+            while(y + offset <= 8 && Grid[x][y+offset].fixed) offset++;
             if(y + offset  > 8) return;
             
             setStyleClicked(x,y,false);
             setStyleClicked(x,y + offset, true);
             
-            lastWidget = tempGrid[x][y+offset].button;
+            lastWidget = Grid[x][y+offset].button;
             last +=1*offset;
         }
     }
     else if(event->keyval == 65363 /*right_arrow*/){
         if(GPOINTER_TO_INT(last) < 80){
             int offset = 1;
-            while(x + offset <= 8 && tempGrid[x+ offset][y].fixed) offset++;
+            while(x + offset <= 8 && Grid[x+ offset][y].fixed) offset++;
             if(x + offset  > 8) return;
             
             setStyleClicked(x,y,false);
             setStyleClicked(x + offset, y, true);
             
-            lastWidget = tempGrid[x+offset][y].button;
+            lastWidget = Grid[x+offset][y].button;
             last +=10*offset;
         }
     }
     else if(event->keyval == 65362 /*up_arrow*/){
         if(GPOINTER_TO_INT(last)%10 !=1){
             int offset = 1;
-            while(y - offset >= 0 && tempGrid[x][y - offset].fixed) offset++;
+            while(y - offset >= 0 && Grid[x][y - offset].fixed) offset++;
             if(y - offset < 0) return;
             
             setStyleClicked(x,y,false);
             setStyleClicked(x,y - offset, true);
             
-            lastWidget = tempGrid[x][y - offset].button;
+            lastWidget = Grid[x][y - offset].button;
             last -=1*offset;
         }
     }
@@ -160,7 +160,7 @@ void callback( GtkWidget *widget, gpointer nr)
     g_print("%i\n", GPOINTER_TO_INT(nr));
     int num = GPOINTER_TO_INT(nr);
     if(num%10){
-        if(locked(num, tempGrid)){
+        if(locked(num, Grid)){
             if(last != NULL){
                 int lastnum = GPOINTER_TO_INT(last);
                 setStyleClicked(getI(lastnum), getJ(lastnum), false);
@@ -179,8 +179,8 @@ void setCurrentNumber(GtkWidget *widget, int nr)
         int lastnum = GPOINTER_TO_INT(last);
         char newLabel[10] = "";
         itoa(GPOINTER_TO_INT(nr)/10, newLabel, 10 );
-        tempGrid[getI(lastnum)][getJ(lastnum)].value=GPOINTER_TO_INT(nr)/10;
-        strcpy(tempGrid[getI(lastnum)][getJ(lastnum)].show, newLabel);
+        Grid[getI(lastnum)][getJ(lastnum)].value=GPOINTER_TO_INT(nr)/10;
+        strcpy(Grid[getI(lastnum)][getJ(lastnum)].show, newLabel);
         gtk_button_set_label(GTK_BUTTON(lastWidget), newLabel);
     }
 }
@@ -239,9 +239,9 @@ void fill_grid_with_buttons(GtkWidget *grid, Field g[][9])
         }
         
         if(j != 9) {
-            tempGrid[i][j].normalState = malloc (sizeof(char)*50);
-            tempGrid[i][j] = g[i][j];
-            tempGrid[i][j].button = button;
+            Grid[i][j].normalState = malloc (sizeof(char)*50);
+            Grid[i][j] = g[i][j];
+            Grid[i][j].button = button;
             gtk_grid_attach (GTK_GRID (grid), button, i, j, 1, 1);
         }
     }
@@ -250,9 +250,9 @@ void fill_grid_with_buttons(GtkWidget *grid, Field g[][9])
   gtk_grid_attach(GTK_GRID (grid), label, 0, -1, 3,1);
   
   int nr=1;
-  while(tempGrid[getI(nr)][getJ(nr)].fixed) nr++;
+  while(Grid[getI(nr)][getJ(nr)].fixed) nr++;
   
-  lastWidget = tempGrid[getI(nr)][getJ(nr)].button;
+  lastWidget = Grid[getI(nr)][getJ(nr)].button;
   last = GINT_TO_POINTER(nr);
   
   setStyleClicked(getI(nr), getJ(nr), true );  
@@ -326,16 +326,17 @@ void setKeyNumber(guint keyval){
         int y = getJ(GPOINTER_TO_INT(last));
         char show[10] ="";
         itoa(0, show, 10);
-        tempGrid[x][y].value = 0;
-        strcpy(tempGrid[x][y].show, show);
-        gtk_button_set_label(GTK_BUTTON(tempGrid[x][y].button), "");
+        Grid[x][y].value = 0;
+        strcpy(Grid[x][y].show, show);
+        gtk_button_set_label(GTK_BUTTON(Grid[x][y].button), "");
     }
+    gridToFile(Grid, name);
 }
 
 void setStyleClicked(int x, int y, bool clicked){
     char style[50] = "myButton_white_";
-    strcat(style, tempGrid[x][y].normalState);
+    strcat(style, Grid[x][y].normalState);
     if(clicked) strcat(style, "_clicked");
     
-    gtk_widget_set_name(tempGrid[x][y].button, style);
+    gtk_widget_set_name(Grid[x][y].button, style);
 }
