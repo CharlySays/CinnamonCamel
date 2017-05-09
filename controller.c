@@ -19,7 +19,6 @@ bool locked(int nr) { return !grid[getI(nr)][getJ(nr)].fixed; }
 void callback( GtkWidget *widget, gpointer nr)
 {   
     g_print("%i\n", GPOINTER_TO_INT(nr));
-    g_print("%i", grid[0][0].value);
     int num = GPOINTER_TO_INT(nr);
     if(num%10){
         if(locked(num)){
@@ -138,7 +137,7 @@ void setKeyNumber(guint keyval){
         curNum=90;
         setCurrentNumber(NULL, curNum);
     }
-    else if(keyval == 65288 || keyval == 48 || keyval == 65456){ /*0*/
+    else if(keyval == 65288 || keyval == 48 || keyval == 65456 || keyval == 65535){ /*0*/
         int x = getI(GPOINTER_TO_INT(last));
         int y = getJ(GPOINTER_TO_INT(last));
         char show[10] ="";

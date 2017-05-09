@@ -19,7 +19,6 @@ void gridToFile(char* fileName){
             }
         }
     }
-
     FILE *myFile = fopen(fileName,"w");
     fputs(output,myFile);
     fclose(myFile);

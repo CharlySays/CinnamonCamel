@@ -2,6 +2,9 @@
 #include <string.h>
 #include <gtk/gtk.h>
 
+#include "global.h"
+int gameTime;
+
 /* Determines if to continue the timer or not */
 static gboolean continue_timer = FALSE;
 
@@ -27,6 +30,7 @@ _label_update(gpointer data)
     char buf[256];
     memset(&buf, 0x0, 256);
     snprintf(buf, 255, "Time elapsed: %d secs", ++sec_expired);
+    gameTime = sec_expired;
     gtk_label_set_label(label, buf);
     return continue_timer;
 
@@ -61,6 +65,7 @@ _pause_resume_timer (GtkWidget *button, gpointer data)
         {
             /*Decrementing because timer will be hit one more time before expiring*/
             sec_expired--;
+            gameTime = sec_expired;
         }
     }
 }
@@ -71,6 +76,7 @@ _reset_timer (GtkWidget *button, gpointer data)
     (void)button; (void)data;/*Avoid compiler warnings*/
     /*Setting to -1 instead of 0, because timer will be triggered once more before expiring*/
     sec_expired = -1;
+    gameTime = sec_expired;
     continue_timer = FALSE;
     start_timer = FALSE;
 }

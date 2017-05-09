@@ -30,7 +30,6 @@ void generateGrid(int numFields){
  */
 
 void prepareForGUI(){
-    g_print("\nprepareForGUI\n");
     int i,k;
     for(i=0;i<9;i++){
         for(k=0;k<9;k++){

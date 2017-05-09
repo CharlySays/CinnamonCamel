@@ -21,6 +21,7 @@ extern gpointer last;
 extern GtkWidget *lastWidget;
 extern Field grid[9][9];
 extern char name[256];
+extern int gameTime;
 
 #endif /* GLOBAL_H */
 

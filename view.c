@@ -88,6 +88,7 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
         grid[i][j].button = button;
         gtk_grid_attach (GTK_GRID (gtkGrid), button, i, j, 1, 1);
         
+        if(j == 8) id++;
     }
   }
   g_timeout_add_seconds(1, _label_update, label);
