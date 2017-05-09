@@ -1,8 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool validNum(int value);
-void coordinateRead(int *value, char C);
-bool readSudokuVal(int *value);
+int isValueInArray(int value, int *array, int size);
 char* itoa(int value, char* result, int base);
 

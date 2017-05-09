@@ -215,19 +215,5 @@ int solvePuzzle(Field grid[][9], int row, int column) {
  * 	int *array - pointer to an integer array, which is to be probed for int value
  * 	int size - size of the array
  */
-int isValueInArray(int value, int *array, int size) {
-	while (size) {
-		if (array[size - 1] == value) {
-			return 1;
-		}
-		size--;
-	}
 
-//	int iterator;
-//	for (iterator = 0; iterator < size; ++iterator) {
-//		if (array[iterator] == value)
-//			return 1;
-//	}
-	return 0;
-}
 

@@ -24,5 +24,13 @@ char* itoa(int value, char* result, int base) {
         }
         return result;
 }
-
+int isValueInArray(int value, int *array, int size) {
+	while (size) {
+		if (array[size - 1] == value) {
+			return 1;
+		}
+		size--;
+	}
+	return 0;
+}
 
