@@ -205,15 +205,5 @@ int solvePuzzle(Field grid[][9], int row, int column) {
 	}
 }
 
-/**
- * @FUNCTION isValueInArray
- *
- * Checks if given integer value is present in given one-dimensional integer array. Note: Also needs to be given the array-size
- *
- * @PARAMETERS
- * 	int value - integer value the function looks for
- * 	int *array - pointer to an integer array, which is to be probed for int value
- * 	int size - size of the array
- */
 
 
