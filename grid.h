@@ -15,7 +15,7 @@ typedef struct{
     char show[10];
     bool correct;
     bool fixed;
-    char *normalState;
+    char normalState[100];
     GtkWidget* button;
 }Field;
 

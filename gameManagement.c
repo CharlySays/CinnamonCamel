@@ -1,6 +1,6 @@
-    #include "gameManagement.h"
+#include "gameManagement.h"
 
-void gridToFile(Field grid[][9], char* fileName){
+void gridToFile(char* fileName){
     char output[1024] = "\0";
     char temp[1024] = "\0";
     for(int i=0;i<9;i++){
@@ -25,7 +25,7 @@ void gridToFile(Field grid[][9], char* fileName){
     fclose(myFile);
 }
 
-bool readGridWithFile(Field grid[][9], FILE *myFile){
+bool readGridWithFile(FILE *myFile){
     //read file into array
 
     for (int i = 0; i < 9; i++){

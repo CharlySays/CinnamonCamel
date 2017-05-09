@@ -1,9 +1,6 @@
 #include "generator.h"
 
-
-
-
-void generateGrid(Field grid[][9], int numFields){
+void generateGrid(int numFields){
     
     srand(time(NULL));
         
@@ -15,9 +12,9 @@ void generateGrid(Field grid[][9], int numFields){
         }
     }
     
-    solvePuzzle(grid,0,0);
-    removeNNumbers(grid, 81-numFields);
-    prepareForGUI(grid);
+    solvePuzzle(0,0);
+    removeNNumbers(81-numFields);
+    prepareForGUI();
 }
 
 
@@ -32,22 +29,23 @@ void generateGrid(Field grid[][9], int numFields){
  *
  */
 
-void prepareForGUI(Field grid[][9]){
+void prepareForGUI(){
+    g_print("\nprepareForGUI\n");
     int i,k;
     for(i=0;i<9;i++){
-        for(k=9;k<9;k++){
+        for(k=0;k<9;k++){
             if(grid[i][k].value){
                 grid[i][k].fixed = true;
                 strcpy(grid[i][k].show,itoa(grid[i][k].value,grid[i][k].show,10));
             }else{
                  grid[i][k].fixed = false;
-                strcpy(grid[i][k].show,"\0");
+                strcpy(grid[i][k].show," ");
             }
         }
     }
 }
 
-void removeNNumbers(Field grid[][9], int numbers) {
+void removeNNumbers(int numbers) {
 
 	while (numbers) {
 		int row, column;
@@ -71,7 +69,7 @@ void removeNNumbers(Field grid[][9], int numbers) {
  * 	int (*puzzle)[9][9] - Pointer to an array containing the current state of the Sudoku
  *
  */
-void printPuzzle(Field grid[][9]) {
+void printPuzzle() {
 	int row, column;
 	for (row = 0; row < 9; row++) {
 		for (column = 0; column < 9; column++) {
@@ -81,6 +79,7 @@ void printPuzzle(Field grid[][9]) {
 	}
 	printf("\n __________________________\n");
 }
+
 /**
  * @FUNCTION isValid
  *
@@ -94,7 +93,7 @@ void printPuzzle(Field grid[][9]) {
  *
  */
 
-int isValid(Field grid[][9], int row, int column, int number) {
+int isValid(int row, int column, int number) {
 	int iterator = 0;
 	int sectorRow = 3 * (row / 3);
 	int sectorColumn = 3 * (column / 3);
@@ -148,7 +147,7 @@ int isValid(Field grid[][9], int row, int column, int number) {
  * 	int col - column address where the function should start to try out numbers
  *
  */
-int solvePuzzle(Field grid[][9], int row, int column) {
+int solvePuzzle(int row, int column) {
 
 	/* First we check if we are already done (we're lazy shits I tell ya)*/
 	if (row < 9 && column < 9) {
@@ -156,9 +155,9 @@ int solvePuzzle(Field grid[][9], int row, int column) {
 		if (grid[row][column].value != 0) {
 			/* next recursive call of the solver */
 			if ((column + 1) < 9) {
-				return solvePuzzle(grid, row, column + 1);
+				return solvePuzzle(row, column + 1);
 			} else {
-				return solvePuzzle(grid, row + 1, 0);
+				return solvePuzzle(row + 1, 0);
 			}
 		} else {
 			/* Fill an array with the numbers 1-9 but in random order */
@@ -176,11 +175,11 @@ int solvePuzzle(Field grid[][9], int row, int column) {
 			}
 			/*iterate over the array for a possible valid number */
 			for (iterator = 0; iterator < 9; ++iterator) {
-				if (isValid(grid, row, column, randomizedNumbers[iterator])) {
+				if (isValid(row, column, randomizedNumbers[iterator])) {
 					/* if a valid number is found write it to the array and start the next recursive call */
 					grid[row][column].value = randomizedNumbers[iterator];
 					if ((column + 1) < 9) {
-						if (solvePuzzle(grid, row, column + 1)) {
+						if (solvePuzzle(row, column + 1)) {
 							return 1;
 						} else {
 							/* if recursive call returns 0 reset the number to 0 again and try the next possibility */
@@ -188,7 +187,7 @@ int solvePuzzle(Field grid[][9], int row, int column) {
                                                         
 						}
 					} else {
-						if (solvePuzzle(grid, row + 1, 0)) {
+						if (solvePuzzle(row + 1, 0)) {
 							return 1;
 						} else {
 							/* if recursive call returns 0 reset the number to 0 again and try the next possibility */
@@ -203,6 +202,3 @@ int solvePuzzle(Field grid[][9], int row, int column) {
 		return 1;
 	}
 }
-
-
-

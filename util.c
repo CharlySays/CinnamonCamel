@@ -1,6 +1,13 @@
 #include "util.h"
 #include <string.h>
 
+bool validNum(int value){
+    if(value<0||value>9){
+        return false;
+    }
+    return true;
+}
+
 char* itoa(int value, char* result, int base) {
         // check that the base if valid
         if (base < 2 || base > 36) { *result = '\0'; return result; }
@@ -24,16 +31,8 @@ char* itoa(int value, char* result, int base) {
         }
         return result;
 }
-/**
- * @FUNCTION isValueInArray
- *
- * Checks if given integer value is present in given one-dimensional integer array. Note: Also needs to be given the array-size
- *
- * @PARAMETERS
- * 	int value - integer value the function looks for
- * 	int *array - pointer to an integer array, which is to be probed for int value
- * 	int size - size of the array
- */
+
+
 int isValueInArray(int value, int *array, int size) {
 	while (size) {
 		if (array[size - 1] == value) {
@@ -43,4 +42,3 @@ int isValueInArray(int value, int *array, int size) {
 	}
 	return 0;
 }
-
