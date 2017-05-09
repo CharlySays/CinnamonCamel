@@ -51,8 +51,8 @@ void removeNNumbers(Field grid[][9], int numbers) {
 
 	while (numbers) {
 		int row, column;
-		row = (rand() % 9) + 1;
-		column = (rand() % 9) + 1;
+		row = (rand() % 9);
+		column = (rand() % 9);
 		if (grid[row][column].value) {
 			grid[row][column].value = 0;
 			numbers--;
