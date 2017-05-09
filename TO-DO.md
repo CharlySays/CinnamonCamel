@@ -1,0 +1,4 @@
+-Timer only starts on Mouseclick, it should start on any first Keyevent or Mouseclick
+-Write time to SaveFile and set startTime accordingly
+-Create a menu
+-Fix resolution
