@@ -9,8 +9,7 @@
 #include "global.h"
 #include "gameManagement.h"
 
-void myCss(void)
-{
+void myCss(void){
     GtkCssProvider *provider;
     GdkDisplay *display;
     GdkScreen *screen;
@@ -35,8 +34,7 @@ void setStyleClicked(int x, int y, bool clicked){
     gtk_widget_set_name(grid[x][y].button, style);
 }
 
-void setCurrentNumber(GtkWidget *widget, int nr)
-{
+void setCurrentNumber(GtkWidget *widget, int nr){
     if(last != NULL){
         int lastnum = GPOINTER_TO_INT(last);
         char newLabel[10] = "";

@@ -140,7 +140,7 @@ void setKeyNumber(guint keyval){
         curNum=90;
         setCurrentNumber(NULL, curNum);
     }
-    else if(keyval == 65288 || keyval == 48 || keyval == 65456 || keyval == 65535){ /*0*/
+    else if(keyval == 65288 || keyval == 48 || keyval == 65456 || keyval == 65535){ 
         int x = getI(GPOINTER_TO_INT(last));
         int y = getJ(GPOINTER_TO_INT(last));
         char show[10] ="";
@@ -165,9 +165,9 @@ void setKeyNumber(guint keyval){
 }
 
 bool checkFilled(){
-    for(int i = 0; i < 9 ; i++){
-        for(int j = 0; j < 9; j++){
-            if(!grid[i][j].value){
+    for(int row = 0; row < 9 ; row++){
+        for(int col = 0; col < 9; col++){
+            if(!grid[row][col].value){
                 return false;
             }
         }
@@ -176,9 +176,10 @@ bool checkFilled(){
 }
 
 bool checkValid(){
-    for(int i = 0; i < 9 ; i++){
-        for(int j = 0; j < 9; j++){
-            if(!isValid(/*grid,*/i,j, grid[i][j].value)){
+    for(int row = 0; row < row ; row++){
+        for(int col = 0; col < 9; col++){
+            if(!isValid(row,col, grid[row][col].value)){
+                printf("row %d col %d seems wrong", row, col);
                 return false;
             }
         }
