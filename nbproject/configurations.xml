@@ -4,11 +4,14 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>controller.h</itemPath>
       <itemPath>gameManagement.h</itemPath>
       <itemPath>generator.h</itemPath>
+      <itemPath>global.h</itemPath>
       <itemPath>grid.h</itemPath>
       <itemPath>logic.h</itemPath>
       <itemPath>util.h</itemPath>
+      <itemPath>view.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -17,6 +20,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>controller.c</itemPath>
       <itemPath>gameManagement.c</itemPath>
       <itemPath>generator.c</itemPath>
       <itemPath>grid.c</itemPath>
@@ -24,6 +28,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>timer.c</itemPath>
       <itemPath>util.c</itemPath>
+      <itemPath>view.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -51,9 +56,14 @@
           <commandLine>`pkg-config --cflags gtk+-3.0`</commandLine>
         </cTool>
         <linkerTool>
+          <commandlineTool>gcc</commandlineTool>
           <commandLine>`pkg-config --libs gtk+-3.0`</commandLine>
         </linkerTool>
       </compileType>
+      <item path="controller.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="controller.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="gameManagement.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="gameManagement.h" ex="false" tool="3" flavor2="0">
@@ -61,6 +71,8 @@
       <item path="generator.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="generator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="global.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="grid.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -77,6 +89,10 @@
       <item path="util.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="view.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="view.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -100,6 +116,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="controller.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="controller.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="gameManagement.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="gameManagement.h" ex="false" tool="3" flavor2="0">
@@ -107,6 +127,8 @@
       <item path="generator.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="generator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="global.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="grid.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -123,6 +145,10 @@
       <item path="util.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="view.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="view.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

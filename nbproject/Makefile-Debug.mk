@@ -35,13 +35,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/controller.o \
 	${OBJECTDIR}/gameManagement.o \
 	${OBJECTDIR}/generator.o \
 	${OBJECTDIR}/grid.o \
 	${OBJECTDIR}/logic.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/timer.o \
-	${OBJECTDIR}/util.o
+	${OBJECTDIR}/util.o \
+	${OBJECTDIR}/view.o
 
 
 # C Compiler Flags
@@ -66,7 +68,12 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cinnamoncamel: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cinnamoncamel ${OBJECTFILES} ${LDLIBSOPTIONS} `pkg-config --libs gtk+-3.0`
+	gcc -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cinnamoncamel ${OBJECTFILES} ${LDLIBSOPTIONS} `pkg-config --libs gtk+-3.0`
+
+${OBJECTDIR}/controller.o: controller.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/controller.o controller.c
 
 ${OBJECTDIR}/gameManagement.o: gameManagement.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -102,6 +109,11 @@ ${OBJECTDIR}/util.o: util.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util.o util.c
+
+${OBJECTDIR}/view.o: view.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/view.o view.c
 
 # Subprojects
 .build-subprojects:
