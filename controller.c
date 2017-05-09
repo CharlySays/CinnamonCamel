@@ -18,6 +18,7 @@ int getJ(int nr) { return (nr-1)%10;}
 
 bool locked(int nr) { return !grid[getI(nr)][getJ(nr)].fixed; }
 
+
 void callback( GtkWidget *widget, gpointer nr)
 {   
     g_print("%i\n", GPOINTER_TO_INT(nr));
