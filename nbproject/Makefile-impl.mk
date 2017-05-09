@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=GTK Test
+PROJECTNAME=CinnamonCamel
 
 # Active Configuration
 DEFAULTCONF=Debug
