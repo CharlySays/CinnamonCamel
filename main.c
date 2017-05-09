@@ -215,12 +215,12 @@ void fill_grid_with_buttons(GtkWidget *grid, Field g[][9])
         if((i == 2 && j == 2) || (i == 5 && j == 5)){
             g[i][j].normalState = malloc(sizeof(char)*50);
             strcpy(g[i][j].normalState,"intersectionspace\0");
-            g[i][j].value == 0 ? gtk_widget_set_name(button, "myButton_white_intersectionspace"):gtk_widget_set_name(button, "myButton_white_intersectionspace_lock");
+            !g[i][j].fixed ? gtk_widget_set_name(button, "myButton_white_intersectionspace"):gtk_widget_set_name(button, "myButton_white_intersectionspace_lock");
         }
         else if((i == 2 && j == 5) || (i == 5 && j == 2)){
             g[i][j].normalState = malloc(sizeof(char)*50);
             strcpy(g[i][j].normalState,"intersectionspace\0");
-            g[i][j].value == 0 ? gtk_widget_set_name(button, "myButton_white_intersectionspace"):gtk_widget_set_name(button, "myButton_white_intersectionspace_lock");
+            !g[i][j].fixed ? gtk_widget_set_name(button, "myButton_white_intersectionspace"):gtk_widget_set_name(button, "myButton_white_intersectionspace_lock");
         }
         else if(j == 9){
             gtk_widget_set_name(button, "myButton_numbers");
@@ -228,17 +228,17 @@ void fill_grid_with_buttons(GtkWidget *grid, Field g[][9])
         else if((i == 2 && j != 2) || (i == 5 && j != 5)){
             g[i][j].normalState = malloc(sizeof(char)*50);
             strcpy(g[i][j].normalState,"rightspace\0");
-            g[i][j].value == 0 ? gtk_widget_set_name(button, "myButton_white_rightspace"): gtk_widget_set_name(button, "myButton_white_rightspace_lock");
+            !g[i][j].fixed ? gtk_widget_set_name(button, "myButton_white_rightspace"): gtk_widget_set_name(button, "myButton_white_rightspace_lock");
         }
         else if((j == 2 && i != 2) || (j == 5 && i != 5)){
             g[i][j].normalState = malloc(sizeof(char)*50);
             strcpy(g[i][j].normalState,"bottomspace\0");
-            g[i][j].value == 0 ? gtk_widget_set_name(button, "myButton_white_bottomspace"): gtk_widget_set_name(button, "myButton_white_bottomspace_lock");
+            !g[i][j].fixed ? gtk_widget_set_name(button, "myButton_white_bottomspace"): gtk_widget_set_name(button, "myButton_white_bottomspace_lock");
         }
         else{
             g[i][j].normalState = malloc(sizeof(char)*50);
             strcpy(g[i][j].normalState,"nospace\0");
-            g[i][j].value == 0 ? gtk_widget_set_name(button, "myButton_white_nospace"):gtk_widget_set_name(button, "myButton_white_nospace_lock");
+            !g[i][j].fixed ? gtk_widget_set_name(button, "myButton_white_nospace"):gtk_widget_set_name(button, "myButton_white_nospace_lock");
         }
         
         if(j != 9) {
