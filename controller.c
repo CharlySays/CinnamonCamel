@@ -8,6 +8,8 @@
 
 #include "view.h"
 #include "global.h"
+#include "generator.h"
+#include "gameManagement.h"
 
 
 int getI(int nr) { return nr/10; }
@@ -146,4 +148,39 @@ void setKeyNumber(guint keyval){
         strcpy(grid[x][y].show, show);
         gtk_button_set_label(GTK_BUTTON(grid[x][y].button), "");
     }
+    else if(keyval == 65307){ /* ESC */
+        gridToFile(name);
+        exit(0);
+    }
+    
+    if(checkFilled()){
+        if(checkValid()){
+            g_print("\nCongratz\n");
+        }
+        else{
+            g_print("\nBaad\n");
+        }
+    }
+}
+
+bool checkFilled(){
+    for(int i = 0; i < 9 ; i++){
+        for(int j = 0; j < 9; j++){
+            if(!grid[i][j].value){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool checkValid(){
+    for(int i = 0; i < 9 ; i++){
+        for(int j = 0; j < 9; j++){
+            if(isValid(i,j, grid[i][j].value) == 0){
+                return false;
+            }
+        }
+    }
+    return true;
 }

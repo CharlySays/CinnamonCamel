@@ -562,7 +562,7 @@ build/Debug/GNU-Linux/controller.o: controller.c controller.h \
  /usr/include/gtk-3.0/gtk/deprecated/gtkvscrollbar.h \
  /usr/include/gtk-3.0/gtk/deprecated/gtkvseparator.h \
  /usr/include/gtk-3.0/gtk/gtk-autocleanups.h grid.h util.h view.h \
- global.h
+ global.h generator.h logic.h gameManagement.h
 
 controller.h:
 
@@ -1773,3 +1773,9 @@ util.h:
 view.h:
 
 global.h:
+
+generator.h:
+
+logic.h:
+
+gameManagement.h:

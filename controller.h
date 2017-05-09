@@ -26,6 +26,8 @@ Field grid[9][9];
 int getI(int nr);
 int getJ(int nr);
 bool locked(int nr);
+bool checkFilled();
+bool checkValid();
 
 void callback( GtkWidget *widget, gpointer nr);
 void on_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
