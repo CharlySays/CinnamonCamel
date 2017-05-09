@@ -177,7 +177,7 @@ bool checkFilled(){
 bool checkValid(){
     for(int i = 0; i < 9 ; i++){
         for(int j = 0; j < 9; j++){
-            if(isValid(i,j, grid[i][j].value) == 0){
+            if(!isValid(/*grid,*/i,j, grid[i][j].value)){
                 return false;
             }
         }

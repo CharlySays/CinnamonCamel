@@ -1,4 +1,4 @@
-build/Debug/GNU-Linux/controller.o: controller.c controller.h \
+build/Debug/GNU-Linux/main.o: main.c timer.c \
  /usr/include/gtk-3.0/gtk/gtk.h /usr/include/gtk-3.0/gdk/gdk.h \
  /usr/include/gtk-3.0/gdk/gdkconfig.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
@@ -577,10 +577,10 @@ build/Debug/GNU-Linux/controller.o: controller.c controller.h \
  /usr/include/gtk-3.0/gtk/deprecated/gtkvscale.h \
  /usr/include/gtk-3.0/gtk/deprecated/gtkvscrollbar.h \
  /usr/include/gtk-3.0/gtk/deprecated/gtkvseparator.h \
- /usr/include/gtk-3.0/gtk/gtk-autocleanups.h grid.h util.h view.h \
- global.h generator.h logic.h gameManagement.h
+ /usr/include/gtk-3.0/gtk/gtk-autocleanups.h global.h grid.h util.h \
+ gameManagement.h generator.h logic.h view.h controller.h
 
-controller.h:
+timer.c:
 
 /usr/include/gtk-3.0/gtk/gtk.h:
 
@@ -1816,16 +1816,18 @@ controller.h:
 
 /usr/include/gtk-3.0/gtk/gtk-autocleanups.h:
 
+global.h:
+
 grid.h:
 
 util.h:
 
-view.h:
-
-global.h:
+gameManagement.h:
 
 generator.h:
 
 logic.h:
 
-gameManagement.h:
+view.h:
+
+controller.h:

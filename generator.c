@@ -12,7 +12,7 @@ void generateGrid(int numFields){
         }
     }
     
-    solvePuzzle(0,0);
+    solvePuzzle( 0, 0);
     removeNNumbers(81-numFields);
     prepareForGUI();
 }
@@ -44,7 +44,7 @@ void prepareForGUI(){
     }
 }
 
-void removeNNumbers(int numbers) {
+void removeNNumbers( int numbers) {
 
 	while (numbers) {
 		int row, column;
@@ -154,9 +154,9 @@ int solvePuzzle(int row, int column) {
 		if (grid[row][column].value != 0) {
 			/* next recursive call of the solver */
 			if ((column + 1) < 9) {
-				return solvePuzzle(row, column + 1);
+				return solvePuzzle(row, (column + 1));
 			} else {
-				return solvePuzzle(row + 1, 0);
+				return solvePuzzle((row + 1), 0);
 			}
 		} else {
 			/* Fill an array with the numbers 1-9 but in random order */

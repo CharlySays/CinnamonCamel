@@ -1,5 +1,5 @@
-build/Debug/GNU-Linux/controller.o: controller.c controller.h \
- /usr/include/gtk-3.0/gtk/gtk.h /usr/include/gtk-3.0/gdk/gdk.h \
+build/Debug/GNU-Linux/generator.o: generator.c generator.h logic.h grid.h \
+ util.h /usr/include/gtk-3.0/gtk/gtk.h /usr/include/gtk-3.0/gdk/gdk.h \
  /usr/include/gtk-3.0/gdk/gdkconfig.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
@@ -577,10 +577,15 @@ build/Debug/GNU-Linux/controller.o: controller.c controller.h \
  /usr/include/gtk-3.0/gtk/deprecated/gtkvscale.h \
  /usr/include/gtk-3.0/gtk/deprecated/gtkvscrollbar.h \
  /usr/include/gtk-3.0/gtk/deprecated/gtkvseparator.h \
- /usr/include/gtk-3.0/gtk/gtk-autocleanups.h grid.h util.h view.h \
- global.h generator.h logic.h gameManagement.h
+ /usr/include/gtk-3.0/gtk/gtk-autocleanups.h global.h
 
-controller.h:
+generator.h:
+
+logic.h:
+
+grid.h:
+
+util.h:
 
 /usr/include/gtk-3.0/gtk/gtk.h:
 
@@ -1816,16 +1821,4 @@ controller.h:
 
 /usr/include/gtk-3.0/gtk/gtk-autocleanups.h:
 
-grid.h:
-
-util.h:
-
-view.h:
-
 global.h:
-
-generator.h:
-
-logic.h:
-
-gameManagement.h:
