@@ -1,30 +1,6 @@
 #include "util.h"
 #include <string.h>
 
-bool validNum(int value){
-    if(value<0||value>9){
-        return false;
-    }
-    return true;
-}
-
-void coordinateRead(int *value, char C){
-    if(!validNum(*value)){
-        printf("%c-Koordinate eingeben: ",C);
-        readSudokuVal(value);
-    }
-}
-
-bool readSudokuVal(int *value){
-    int result = scanf("%d", value);
-    if(!validNum(*value)|| result == 0){
-         while (fgetc(stdin) != '\n')
-        *value = 10;
-         return false;
-    }
-    return true;
-}
-
 char* itoa(int value, char* result, int base) {
         // check that the base if valid
         if (base < 2 || base > 36) { *result = '\0'; return result; }

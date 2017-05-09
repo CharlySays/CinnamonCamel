@@ -1,32 +1,5 @@
 #include "grid.h"
 
-bool readGrid(Field grid[][9]){
-    FILE *myFile;
-    myFile = fopen("somenumbers.txt", "r");
-
-    //read file into array
-
-    for (int i = 0; i < 9; i++){
-        for (int j = 0; j < 9; j++){
-            if(!(fgets(grid[i][j].show,2,myFile))){
-                return false;
-            }
-            grid[i][j].value = atoi(grid[i][j].show);
-            if(atoi(grid[i][j].show) != 0){
-                grid[i][j].fixed = true;
-                grid[i][j].correct = true;
-            }else{
-                grid[i][j].fixed = false;
-                grid[i][j].correct = false;
-            }
-        }
-    }
-
-    fclose(myFile);
-    return true;
-}
-
-
 void render(Field grid[][9] ,int X, int Y){
     char output[100];
     for(int i=0;i<9;i++){
@@ -84,17 +57,9 @@ void renderInt(Field grid[][9] ,int X, int Y){
 }
 
 bool insertValue(Field grid[][9], int value, int X, int Y){
-    if(isfixed(grid,X,Y) || !validNum(value)){
-        return false;
-    }
-
     grid[Y-1][X-1].value = value;
     strcpy(grid[Y-1][X-1].show,itoa(value,grid[Y-1][X-1].show,10));
     return true;
-}
-
-bool isfixed(Field grid[][9], int X, int Y){
-    return grid[Y-1][X-1].fixed;
 }
 
 

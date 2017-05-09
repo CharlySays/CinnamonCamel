@@ -73,6 +73,7 @@ void gameManagement(Field grid[][9], FILE *myFile)
        myFile = fopen(FileName, "r+");
     }
     readGridWithFile(grid,myFile);
+    g_print("Test");
 }
 
 void myCss(void)
