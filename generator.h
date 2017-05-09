@@ -8,3 +8,4 @@ void printPuzzle(Field grid[][9]);
 int isValueInArray(int value, int *array, int size);
 void removeNNumbers(Field grid[][9], int numbers);
 void prepareForGUI(Field grid[][9]);
+void generateGrid(Field grid[][9], int numFields);

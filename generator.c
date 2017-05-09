@@ -3,7 +3,7 @@
 
 
 
-void generateGrid(Field grid[][9], int numFields, char *gameName){
+void generateGrid(Field grid[][9], int numFields){
     
     srand(time(NULL));
         
