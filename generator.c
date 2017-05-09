@@ -81,7 +81,6 @@ void printPuzzle(Field grid[][9]) {
 	}
 	printf("\n __________________________\n");
 }
-
 /**
  * @FUNCTION isValid
  *

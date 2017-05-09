@@ -44,4 +44,3 @@ int isValueInArray(int value, int *array, int size) {
 	return 0;
 }
 
-
