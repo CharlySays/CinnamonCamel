@@ -58,7 +58,7 @@ void gameManagement(Field grid[][9], FILE *myFile)
     {
        myFile = fopen(name, "wb");
        // genrator here bum bang done
-       generateGrid(80);
+       generateGrid(20);
        gridToFile(name);
        myFile = fopen(name, "r+");
     }
