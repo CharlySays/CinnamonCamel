@@ -61,7 +61,7 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
         g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(callback), GINT_TO_POINTER(id));
         g_signal_connect (G_OBJECT (button), "key_press_event", G_CALLBACK (on_key_press), NULL);
                 
-        gtk_widget_set_size_request(button, 10,10);
+        gtk_widget_set_size_request(button, 50,50);
         
         if((i == 2 && j == 2) || (i == 5 && j == 5)){
             strcpy(grid[i][j].normalState,"intersectionspace\0");
