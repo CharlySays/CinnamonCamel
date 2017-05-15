@@ -29,8 +29,9 @@ _label_update(gpointer data)
     GtkLabel *label = (GtkLabel*)data;
     char buf[256];
     memset(&buf, 0x0, 256);
-    snprintf(buf, 255, "Time elapsed: %d secs", ++sec_expired);
+    ++sec_expired;
     gameTime = sec_expired;
+    snprintf(buf, 255, "Time elapsed: %d secs", gameTime/2);
     gtk_label_set_label(label, buf);
     return continue_timer;
 

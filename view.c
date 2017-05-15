@@ -52,12 +52,11 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
   int i, j, id=1;
   
   label = gtk_label_new("Time elapsed: 0 secs");
-
+  
   for (i = 0; i < 9; i += 1) {
     for (j = 0; j < 9; j += 1, id++) {
         
         button = gtk_button_new_with_label (strcmp(grid[i][j].show, "0") ? grid[i][j].show : "  ");
-        g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(_start_timer), label);
         g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(callback), GINT_TO_POINTER(id));
         g_signal_connect (G_OBJECT (button), "key_press_event", G_CALLBACK (on_key_press), NULL);
                 
@@ -99,4 +98,7 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
   last = GINT_TO_POINTER(nr);
   
   setStyleClicked(getI(nr), getJ(nr), true);  
+  
+  
+  _start_timer(button, label);
 }
