@@ -25,12 +25,14 @@ Field grid[9][9];
 char name[256];
 int gameTime;
 GtkWidget *dialog;
+GtkContainer *container;
 
 void myCss(void);
 void setStyleClicked(int x, int y, bool clicked);
 void setCurrentNumber(GtkWidget *widget, int nr);
 void fill_grid_with_buttons(GtkWidget *gtkGrid);
 void createDialog(GtkWidget *parent);
+GtkWidget* createMenu();
 
 #endif /* VIEW_H */
 

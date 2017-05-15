@@ -152,8 +152,7 @@ void setKeyNumber(guint keyval){
     }
     
     if(keyval == 65307){ /* ESC */
-        gridToFile(name);
-        exit(0);
+        quit(NULL, NULL);
     }
     
     if(checkFilled()){
@@ -192,7 +191,7 @@ bool checkValid(){
 void
 on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
     if(event->keyval == 65293){
-        GtkWidget *mygrid; 
+        GtkWidget *mygrid, *vbox; 
         mygrid = gtk_grid_new();
 
         strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
@@ -200,12 +199,21 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
         readGridWithFile(strcat(name,".txt"),20);
         myCss();
         fill_grid_with_buttons(mygrid);
-  
-        gtk_container_add(GTK_CONTAINER(user_data), mygrid);
         
+        vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+        gtk_container_add(GTK_CONTAINER(user_data),vbox);
+        
+        gtk_container_add(GTK_CONTAINER(vbox), createMenu());
+        gtk_container_add(GTK_CONTAINER(vbox), mygrid);
+
         gtk_widget_show_all (GTK_WIDGET(user_data));
         gtk_widget_hide(dialog);
     }
     
     else g_print("");
+}
+
+void quit( GtkWidget *widget, gpointer user_data){
+    gridToFile(name);
+    exit(0);
 }

@@ -122,3 +122,24 @@ void createDialog(GtkWidget *parent){
 
     gtk_widget_show_all(dialog);
 }
+
+GtkWidget* createMenu(){
+    GtkWidget *menubar;
+    GtkWidget *fileMenu;
+    GtkWidget *fileMi;
+    GtkWidget *quitMi;
+
+    menubar = gtk_menu_bar_new();
+    fileMenu = gtk_menu_new();
+
+    fileMi = gtk_menu_item_new_with_label("File");
+    quitMi = gtk_menu_item_new_with_label("Quit");
+
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(fileMi), fileMenu);
+    gtk_menu_shell_append(GTK_MENU_SHELL(fileMenu), quitMi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menubar), fileMi);
+    
+    g_signal_connect(G_OBJECT(quitMi), "activate", G_CALLBACK(quit), NULL);
+    
+    return menubar;
+}

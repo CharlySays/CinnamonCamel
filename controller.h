@@ -25,6 +25,7 @@ gpointer last;
 GtkWidget *lastWidget;
 Field grid[9][9];
 GtkWidget *dialog;
+GtkContainer *container;
 
 
 int getI(int nr);
@@ -36,6 +37,7 @@ bool checkValid();
 void callback( GtkWidget *widget, gpointer nr);
 void on_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
 void on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
+void quit( GtkWidget *widget, gpointer user_data);
 
 void setKeyNumber(guint keyval);
 
