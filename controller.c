@@ -186,3 +186,31 @@ bool checkValid(){
     }
     return true;
 }
+
+void
+on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
+    if(event->keyval == 65293){
+        GtkWidget *mygrid; 
+        mygrid = gtk_grid_new();
+
+        strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
+        
+        gameManagement(grid);
+        myCss();
+        fill_grid_with_buttons(mygrid);
+  
+        gtk_container_add(GTK_CONTAINER(user_data), mygrid);
+        
+        gtk_widget_show_all (GTK_WIDGET(user_data));
+        gtk_widget_hide(dialog);
+    }
+    
+    else g_print("");
+}
+
+void gameManagement()
+{
+    strcat(name,".txt");
+    
+    readGridWithFile(name,20);
+}

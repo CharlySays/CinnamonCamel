@@ -106,3 +106,17 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
   
   _start_timer(button, label);
 }
+
+void createDialog(GtkWidget *parent){
+    
+    GtkWidget *entry;
+    
+    dialog = gtk_dialog_new();
+    gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
+    entry = gtk_entry_new();
+    gtk_dialog_add_action_widget(GTK_DIALOG(dialog), entry, 0);
+    
+    g_signal_connect (G_OBJECT (entry), "key_press_event", G_CALLBACK (on_press), parent);
+
+    gtk_widget_show_all(dialog);
+}

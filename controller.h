@@ -17,10 +17,14 @@
 #include <gtk/gtk.h>
 #include <stdbool.h>
 #include "grid.h"
+#include <string.h>
+#include "gameManagement.h"
+#include "generator.h"
 
 gpointer last;
 GtkWidget *lastWidget;
 Field grid[9][9];
+GtkWidget *dialog;
 
 
 int getI(int nr);
@@ -31,8 +35,10 @@ bool checkValid();
 
 void callback( GtkWidget *widget, gpointer nr);
 void on_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
+void on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
 
 void setKeyNumber(guint keyval);
+void gameManagement();
 
 #endif /* CONTROLLER_H */
 
