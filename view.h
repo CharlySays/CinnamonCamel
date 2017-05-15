@@ -33,6 +33,7 @@ void setCurrentNumber(GtkWidget *widget, int nr);
 void fill_grid_with_buttons(GtkWidget *gtkGrid);
 void createDialog(GtkWidget *parent);
 GtkWidget* createMenu();
+GdkPixbuf *create_pixbuf(const gchar * filename);
 
 #endif /* VIEW_H */
 

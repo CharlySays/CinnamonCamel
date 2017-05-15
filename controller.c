@@ -196,7 +196,7 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
 
         strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
         
-        readGridWithFile(strcat(name,".txt"),20);
+        readGridWithFile(strcat(name,".txt"),30);
         myCss();
         fill_grid_with_buttons(mygrid);
         
