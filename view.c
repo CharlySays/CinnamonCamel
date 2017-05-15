@@ -28,6 +28,7 @@ void myCss(void){
 void setStyleClicked(int x, int y, bool clicked){
     char style[50] = "myButton_white_";
     strcat(style, grid[x][y].normalState);
+    if(grid[x][y].fixed) strcat(style, "_lock");
     if(clicked) strcat(style, "_clicked");
     
     gtk_widget_set_name(grid[x][y].button, style);
@@ -109,12 +110,13 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
 
 void createDialog(GtkWidget *parent){
     
-    GtkWidget *entry;
+    GtkWidget *entry, *label;
     
     dialog = gtk_dialog_new();
     gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
     entry = gtk_entry_new();
     gtk_dialog_add_action_widget(GTK_DIALOG(dialog), entry, 0);
+    gtk_window_set_title (GTK_WINDOW (dialog), "Spielname");
     
     g_signal_connect (G_OBJECT (entry), "key_press_event", G_CALLBACK (on_press), parent);
 

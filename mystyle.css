@@ -111,6 +111,46 @@ GtkButton {
     font-size: 21px;
 }
 
+#myButton_white_nospace_lock_clicked{
+    background-image: none;
+    background-color: #FF3333;
+    color: black;
+    font: bold;
+    font-size: 20px;
+}
+
+#myButton_white_rightspace_lock_clicked{
+    background-image: none;
+    background-color: #FF3333;
+    border-right-color: black;
+    border-right-width: 5px;
+    color: black;
+    font: bold;
+    font-size: 20px;
+}
+
+#myButton_white_bottomspace_lock_clicked{
+    background-image: none;
+    background-color: #FF3333;
+    border-bottom-color: black;
+    border-bottom-width: 5px;
+    color: black;
+    font: bold;
+    font-size: 20px;
+}
+
+#myButton_white_intersectionspace_lock_clicked{
+    background-image: none;
+    background-color: #FF3333;
+    border-bottom-color: black;
+    border-right-color: black;
+    border-bottom-width: 5px;
+    border-right-width: 5px;
+    color: black;
+    font: bold;
+    font-size: 21px;
+}
+
 
 GtkButton:hover,
 #myButton_white_nospace:hover,
