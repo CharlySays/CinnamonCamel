@@ -160,3 +160,10 @@ GtkButton:hover,
 {
     background-color: #70ee70;
 }
+#myButton_white_nospace_lock:hover,
+#myButton_white_rightspace_lock:hover,
+#myButton_white_bottomspace_lock:hover,
+#myButton_white_intersectionspace_lock:hover
+{
+    background-color: #FF3333;
+}
