@@ -19,6 +19,9 @@ void gridToFile(char* fileName){
             }
         }
     }
+    
+    strcat(output,itoa(gameTime,temp,10));
+    
     FILE *myFile = fopen(fileName,"w");
     fputs(output,myFile);
     fclose(myFile);
@@ -46,7 +49,7 @@ bool readGridWithFile(char *fileName, int numberOfFields){
         }
     }
     
-    char temp[5] = "\0";
+    char temp[10] = "\0";
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){
             if(!(fgets(temp,2,myFile))){
@@ -61,6 +64,14 @@ bool readGridWithFile(char *fileName, int numberOfFields){
             }
         }
     }
+    
+    char time[10] = "\0";
+    while(fgets(temp,2,myFile)){
+        strcat(time,temp);
+    }
+    
+    gameTime = atoi(time);
+    g_print("%i",gameTime);
     
     return true;
 }

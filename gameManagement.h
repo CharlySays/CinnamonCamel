@@ -1,5 +1,5 @@
 #include "grid.h"
-
+#include "generator.h"
 #include "global.h"
 
 gpointer last;

@@ -44,6 +44,7 @@ _start_timer (GtkWidget *button, gpointer data)
     GtkWidget *label = data;
     if(!start_timer)
     {
+        sec_expired = gameTime;
         g_timeout_add_seconds(1, _label_update, label);
         start_timer = TRUE;
         continue_timer = TRUE;
