@@ -24,8 +24,18 @@ void gridToFile(char* fileName){
     fclose(myFile);
 }
 
-bool readGridWithFile(FILE *myFile){
+bool readGridWithFile(char *fileName, int numberOfFields){
     //read file into array
+    
+    FILE *myFile = fopen(fileName, "r+");
+    if(myFile == NULL) //if file does not exist, create it
+    {
+       myFile = fopen(name, "wb");
+       generateGrid(numberOfFields);
+       gridToFile(name);
+       fclose(myFile);
+       myFile = fopen(name, "r+");
+    }
 
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){

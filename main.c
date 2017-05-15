@@ -24,7 +24,7 @@
 #include "global.h"
 
 
-void gameManagement(Field grid[][9], FILE *myFile);
+void gameManagement(Field grid[][9]);
 static void activate (GtkApplication* app,gpointer user_data);
 
 gpointer last;
@@ -48,21 +48,12 @@ int main (int    argc, char **argv)
   return status;
 }
 
-void gameManagement(Field grid[][9], FILE *myFile)
+void gameManagement(Field grid[][9])
 {
     printf("Spielname: ");
     scanf("%s",name);
-
-    myFile = fopen(strcat(name,".txt"), "r+");
-    if(myFile == NULL) //if file does not exist, create it
-    {
-       myFile = fopen(name, "wb");
-       // genrator here bum bang done
-       generateGrid(20);
-       gridToFile(name);
-       myFile = fopen(name, "r+");
-    }
-    readGridWithFile(myFile);
+    
+    readGridWithFile(strcat(name,".txt"),20);
 }
 
 static void activate (GtkApplication* app,gpointer user_data)
@@ -75,10 +66,8 @@ static void activate (GtkApplication* app,gpointer user_data)
   gtk_window_set_default_size (GTK_WINDOW (window), 300, 350);
   
   mygrid = gtk_grid_new();
-  
-  FILE *gameFile = NULL;
 
-  gameManagement(grid,gameFile);
+  gameManagement(grid);
   myCss();
   fill_grid_with_buttons(mygrid);
   
