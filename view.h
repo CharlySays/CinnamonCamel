@@ -17,11 +17,13 @@
 #include "stdbool.h"
 #include "grid.h"
 #include "controller.h"
+#include "global.h"
 
 gpointer last;
 GtkWidget *lastWidget;
 Field grid[9][9];
 char name[256];
+int gameTime;
 
 void myCss(void);
 void setStyleClicked(int x, int y, bool clicked);

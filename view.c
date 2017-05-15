@@ -6,7 +6,6 @@
 
 #include "view.h"
 #include "timer.c"
-#include "global.h"
 #include "gameManagement.h"
 
 void myCss(void){
@@ -51,7 +50,12 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
   GtkWidget *button, *label;
   int i, j, id=1;
   
-  label = gtk_label_new("Time elapsed: 0 secs");
+  char temp[50] = "Time elapsed: ";
+  char gameTimeChar[20];
+  strcat(temp, itoa(gameTime/2, gameTimeChar, 10));
+  strcat(temp, " secs");
+  
+  label = gtk_label_new(temp);
   
   for (i = 0; i < 9; i += 1) {
     for (j = 0; j < 9; j += 1, id++) {
