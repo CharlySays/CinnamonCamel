@@ -52,8 +52,9 @@ void gameManagement(Field grid[][9])
 {
     printf("Spielname: ");
     scanf("%s",name);
+    strcat(name,".txt");
     
-    readGridWithFile(strcat(name,".txt"),20);
+    readGridWithFile(name,20);
 }
 
 static void activate (GtkApplication* app,gpointer user_data)
