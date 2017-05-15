@@ -195,7 +195,7 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
 
         strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
         
-        gameManagement(grid);
+        readGridWithFile(strcat(name,".txt"),20);
         myCss();
         fill_grid_with_buttons(mygrid);
   
@@ -206,11 +206,4 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
     }
     
     else g_print("");
-}
-
-void gameManagement()
-{
-    strcat(name,".txt");
-    
-    readGridWithFile(name,20);
 }

@@ -38,7 +38,6 @@ void on_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
 void on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
 
 void setKeyNumber(guint keyval);
-void gameManagement();
 
 #endif /* CONTROLLER_H */
 
