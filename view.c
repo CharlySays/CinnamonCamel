@@ -130,16 +130,43 @@ GtkWidget* createMenu(){
     GtkWidget *quitMi;
 
     menubar = gtk_menu_bar_new();
+    
     fileMenu = gtk_menu_new();
-
     fileMi = gtk_menu_item_new_with_label("File");
     quitMi = gtk_menu_item_new_with_label("Quit");
-
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(fileMi), fileMenu);
     gtk_menu_shell_append(GTK_MENU_SHELL(fileMenu), quitMi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menubar), fileMi);
     
     g_signal_connect(G_OBJECT(quitMi), "activate", G_CALLBACK(quit), NULL);
+    
+    GtkWidget *gameMenu, *newGameMenu;
+    GtkWidget *gameMi;
+    GtkWidget *newGameMi, *loadGameMi;
+    GtkWidget *easyMi, *mediumMi, *hardMi;
+
+    gameMenu = gtk_menu_new();
+    gameMi = gtk_menu_item_new_with_label("Game");
+  
+    newGameMenu = gtk_menu_new();
+    newGameMi = gtk_menu_item_new_with_label("New Game");
+    easyMi = gtk_menu_item_new_with_label("Easy...");
+    mediumMi = gtk_menu_item_new_with_label("Medium...");
+    hardMi = gtk_menu_item_new_with_label("Hard...");
+  
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(newGameMi), newGameMenu);
+    gtk_menu_shell_append(GTK_MENU_SHELL(newGameMenu), easyMi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(newGameMenu), mediumMi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(newGameMenu), hardMi);
+    GtkWidget *sep = gtk_separator_menu_item_new();  
+    loadGameMi = gtk_menu_item_new_with_label("Load Game");
+
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(gameMi), gameMenu);
+    gtk_menu_shell_append(GTK_MENU_SHELL(gameMenu), newGameMi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(gameMenu), sep);
+    gtk_menu_shell_append(GTK_MENU_SHELL(gameMenu), loadGameMi);
+    
+    gtk_menu_shell_append(GTK_MENU_SHELL(menubar), gameMi);
     
     return menubar;
 }
