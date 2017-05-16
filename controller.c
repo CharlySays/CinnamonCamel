@@ -10,7 +10,7 @@
 #include "global.h"
 #include "generator.h"
 #include "gameManagement.h"
-
+#include "timer.c"
 
 int getI(int nr) { return nr/10; }
 
@@ -191,22 +191,31 @@ void
 on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
     if(event->keyval == 65293){
         GtkWidget *mygrid, *vbox; 
-        mygrid = gtk_grid_new();
+        if(numberFields == 0){
+            mygrid = gtk_grid_new();
 
-        strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
+            strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
         
-        readGridWithFile(strcat(name,".txt"),30);
-        myCss();
-        fill_grid_with_buttons(mygrid);
+            readGridWithFile(strcat(name,".txt"),30);
+            myCss();
+            fill_grid_with_buttons(mygrid);
         
-        vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-        gtk_container_add(GTK_CONTAINER(user_data),vbox);
+            vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+            gtk_container_add(GTK_CONTAINER(user_data),vbox);
         
-        gtk_container_add(GTK_CONTAINER(vbox), createMenu());
-        gtk_container_add(GTK_CONTAINER(vbox), mygrid);
+            gtk_container_add(GTK_CONTAINER(vbox), createMenu());
+            gtk_container_add(GTK_CONTAINER(vbox), mygrid);
 
-        gtk_widget_show_all (GTK_WIDGET(user_data));
-        gtk_widget_hide(dialog);
+            gtk_widget_show_all (GTK_WIDGET(user_data));
+            gtk_widget_hide(dialog);
+        }
+        else{
+            strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
+            strcat(name,".txt"),30;
+            newGrid();
+            gtk_widget_hide(dialog);
+        }
+        
     }
     
     else g_print("");
@@ -218,7 +227,9 @@ void quit( GtkWidget *widget, gpointer user_data){
 }
 
 void createNewGame( GtkWidget *widget, gpointer numOfFields){
-    int num = GPOINTER_TO_INT(numOfFields);
+    numberFields = GPOINTER_TO_INT(numOfFields);
+    gtk_entry_set_text(GTK_ENTRY(entry), "");
+    gtk_widget_show_all(dialog);
 }
 
 void loadGame( GtkWidget *widget, gpointer user_data){
@@ -248,5 +259,20 @@ void toggleHints( GtkWidget *widget, gpointer user_data){
     else {
         hints = false;
         setCorresponding(x, y, 0);
+    }
+}
+
+void newGrid(){
+    generateGrid(numberFields);
+    
+    for ( int i = 0; i < 9; i++) {
+	for (int j = 0; j < 9; j++) {
+            char temp[50] = "myButton_white_";
+            strcat(temp, grid[i][j].normalState);
+            if (!grid[i][j].fixed ) strcat(temp, "_lock");
+            gtk_widget_set_name(grid[i][j].button, temp);
+            setCurrentNumber(grid[i][j].button, (i*10)+1+j);
+            gtk_button_set_label(GTK_BUTTON(grid[i][j].button), grid[i][j].show);
+        }
     }
 }

@@ -24,10 +24,11 @@
 gpointer last;
 GtkWidget *lastWidget;
 Field grid[9][9];
-GtkWidget *dialog;
+GtkWidget *dialog, *entry;
 GtkContainer *container;
 bool autosave;
 bool hints;
+int numberFields;
 
 
 int getI(int nr);
@@ -45,6 +46,7 @@ void loadGame( GtkWidget *widget, gpointer user_data);
 void saveGame( GtkWidget *widget, gpointer user_data);
 void toggleSave( GtkWidget *widget, gpointer user_data);
 void toggleHints( GtkWidget *widget, gpointer user_data);
+void newGrid();
 
 void setKeyNumber(guint keyval);
 

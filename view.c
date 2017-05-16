@@ -53,7 +53,7 @@ void setCurrentNumber(GtkWidget *widget, int nr){
 
 void fill_grid_with_buttons(GtkWidget *gtkGrid) 
 {
-  GtkWidget *button, *label;
+  GtkWidget *button;
   int i, j, id=1;
   
   char temp[50] = "Time elapsed: ";
@@ -117,7 +117,7 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
 
 void createDialog(GtkWidget *parent){
     
-    GtkWidget *entry, *label;
+    GtkWidget *label;
     
     dialog = gtk_dialog_new();
     gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
