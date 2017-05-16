@@ -71,7 +71,6 @@ bool readGridWithFile(char *fileName, int numberOfFields){
     }
     
     gameTime = atoi(time);
-    g_print("%i",gameTime);
     
     return true;
 }
