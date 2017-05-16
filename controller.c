@@ -21,7 +21,6 @@ bool locked(int nr) { return !grid[getI(nr)][getJ(nr)].fixed; }
 
 void callback( GtkWidget *widget, gpointer nr)
 {   
-    g_print("%i\n", GPOINTER_TO_INT(nr));
     int num = GPOINTER_TO_INT(nr);
     if(num%10){
         if(last != NULL){
@@ -214,7 +213,7 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
 }
 
 void quit( GtkWidget *widget, gpointer user_data){
-    gridToFile(name);
+    if(autosave)gridToFile(name);
     exit(0);
 }
 
@@ -224,4 +223,17 @@ void createNewGame( GtkWidget *widget, gpointer numOfFields){
 
 void loadGame( GtkWidget *widget, gpointer user_data){
     
+}
+
+void saveGame( GtkWidget *widget, gpointer user_data){
+    gridToFile(name);
+}
+
+void toggle( GtkWidget *widget, gpointer user_data){
+    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
+        autosave = true;
+    } 
+    else {
+        autosave = false;
+    }
 }

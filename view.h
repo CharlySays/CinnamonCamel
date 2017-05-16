@@ -26,6 +26,7 @@ char name[256];
 int gameTime;
 GtkWidget *dialog;
 GtkContainer *container;
+bool autosave;
 
 void myCss(void);
 void setStyleClicked(int x, int y, bool clicked);
@@ -34,6 +35,7 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid);
 void createDialog(GtkWidget *parent);
 GtkWidget* createMenu();
 GdkPixbuf *create_pixbuf(const gchar * filename);
+void setCorresponding(int x, int y, int val);
 
 #endif /* VIEW_H */
 

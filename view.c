@@ -31,19 +31,24 @@ void setStyleClicked(int x, int y, bool clicked){
     if(grid[x][y].fixed) strcat(style, "_lock");
     if(clicked) strcat(style, "_clicked");
     
+    setCorresponding(x, y, grid[x][y].value);
     gtk_widget_set_name(grid[x][y].button, style);
 }
 
 void setCurrentNumber(GtkWidget *widget, int nr){
     if(last != NULL){
         int lastnum = GPOINTER_TO_INT(last);
+        int x = getI(lastnum);
+        int y = getJ(lastnum);
         char newLabel[10] = "";
         itoa(GPOINTER_TO_INT(nr)/10, newLabel, 10 );
-        grid[getI(lastnum)][getJ(lastnum)].value=GPOINTER_TO_INT(nr)/10;
-        strcpy(grid[getI(lastnum)][getJ(lastnum)].show, newLabel);
+        grid[x][y].value=GPOINTER_TO_INT(nr)/10;
+        strcpy(grid[x][y].show, newLabel);
+        
+        setCorresponding(x, y, grid[x][y].value);
         gtk_button_set_label(GTK_BUTTON(lastWidget), newLabel);
     }
-    gridToFile(name);
+    if(autosave) gridToFile(name);
 }
 
 void fill_grid_with_buttons(GtkWidget *gtkGrid) 
@@ -127,18 +132,21 @@ GtkWidget* createMenu(){
     GtkWidget *menubar;
     GtkWidget *fileMenu;
     GtkWidget *fileMi;
-    GtkWidget *quitMi;
+    GtkWidget *quitMi, *saveMi;
 
     menubar = gtk_menu_bar_new();
     
     fileMenu = gtk_menu_new();
     fileMi = gtk_menu_item_new_with_label("File");
     quitMi = gtk_menu_item_new_with_label("Quit");
+    saveMi = gtk_menu_item_new_with_label("Save");
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(fileMi), fileMenu);
+    gtk_menu_shell_append(GTK_MENU_SHELL(fileMenu), saveMi);
     gtk_menu_shell_append(GTK_MENU_SHELL(fileMenu), quitMi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menubar), fileMi);
     
     g_signal_connect(G_OBJECT(quitMi), "activate", G_CALLBACK(quit), NULL);
+    g_signal_connect(G_OBJECT(saveMi), "activate", G_CALLBACK(saveGame), NULL);
     
     GtkWidget *gameMenu, *newGameMenu;
     GtkWidget *gameMi;
@@ -172,6 +180,21 @@ GtkWidget* createMenu(){
     
     gtk_menu_shell_append(GTK_MENU_SHELL(menubar), gameMi);
     
+    GtkWidget *optionsMenu;
+    GtkWidget *optionMi;
+    GtkWidget *autosaveMi;
+    
+    optionsMenu = gtk_menu_new();
+    optionMi = gtk_menu_item_new_with_label("Options");
+    autosaveMi = gtk_check_menu_item_new_with_label("Auto save");
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(optionMi), optionsMenu);
+    gtk_menu_shell_append(GTK_MENU_SHELL(optionsMenu), autosaveMi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menubar), optionMi);
+    
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(autosaveMi), TRUE);
+    g_signal_connect(G_OBJECT(autosaveMi), "activate", G_CALLBACK(toggle), NULL);
+    autosave = true;
+    
     return menubar;
 }
 
@@ -186,4 +209,19 @@ GdkPixbuf *create_pixbuf(const gchar * filename)
    }
 
    return pixbuf;
+}
+
+void setCorresponding(int x, int y, int val){
+    for(int i = 0 ; i < 9; i++){
+        for(int j = 0; j < 9; j++){
+            if(i != x || j != y){
+                char style[50] = "myButton_white_";
+                strcat(style, grid[i][j].normalState);
+                if(grid[i][j].fixed) strcat(style, "_lock");
+                if(grid[i][j].value == val && val != 0) strcat(style, "_cor");
+                
+                gtk_widget_set_name(grid[i][j].button, style);
+            }
+        }
+    }
 }

@@ -7,22 +7,26 @@ GtkButton {
     color: black;
 }
 
-#myButton_numbers{
-    background-image: none;
-    background-color: white;
-    border-top-width: 20px;
-    border-color: gray;
-    color: black;
-}
-
 #myButton_white_nospace{
     background-image: none;
     background-color: white;
 }
 
+#myButton_white_nospace_cor{
+    background-image: none;
+    background-color: #eeff22;
+}
+
 #myButton_white_rightspace{
     background-image: none;
     background-color: white;
+    border-right-color: black;
+    border-right-width: 5px;
+}
+
+#myButton_white_rightspace_cor{
+    background-image: none;
+    background-color: #eeff22;
     border-right-color: black;
     border-right-width: 5px;
 }
@@ -34,9 +38,26 @@ GtkButton {
     border-bottom-width: 5px;
 }
 
+#myButton_white_bottomspace_cor{
+    background-image: none;
+    background-color: #eeff22;
+    border-bottom-color: black;
+    border-bottom-width: 5px;
+}
+
+
 #myButton_white_intersectionspace{
     background-image: none;
     background-color: white;
+    border-bottom-color: black;
+    border-right-color: black;
+    border-bottom-width: 5px;
+    border-right-width: 5px;
+}
+
+#myButton_white_intersectionspace_cor{
+    background-image: none;
+    background-color: #eeff22;
     border-bottom-color: black;
     border-right-color: black;
     border-bottom-width: 5px;
@@ -79,9 +100,27 @@ GtkButton {
     font-size: 20px;
 }
 
+#myButton_white_nospace_lock_cor{
+    background-image: none;
+    background-color: #ff9911;
+    color: black;
+    font: bold;
+    font-size: 20px;
+}
+
 #myButton_white_rightspace_lock{
     background-image: none;
     background-color: white;
+    border-right-color: black;
+    border-right-width: 5px;
+    color: black;
+    font: bold;
+    font-size: 20px;
+}
+
+#myButton_white_rightspace_lock_cor{
+    background-image: none;
+    background-color: #ff9911;
     border-right-color: black;
     border-right-width: 5px;
     color: black;
@@ -99,9 +138,31 @@ GtkButton {
     font-size: 20px;
 }
 
+#myButton_white_bottomspace_lock_cor{
+    background-image: none;
+    background-color: #ff9911;
+    border-bottom-color: black;
+    border-bottom-width: 5px;
+    color: black;
+    font: bold;
+    font-size: 20px;
+}
+
 #myButton_white_intersectionspace_lock{
     background-image: none;
     background-color: white;
+    border-bottom-color: black;
+    border-right-color: black;
+    border-bottom-width: 5px;
+    border-right-width: 5px;
+    color: black;
+    font: bold;
+    font-size: 21px;
+}
+
+#myButton_white_intersectionspace_lock_cor{
+    background-image: none;
+    background-color: #ff9911;
     border-bottom-color: black;
     border-right-color: black;
     border-bottom-width: 5px;
@@ -150,7 +211,6 @@ GtkButton {
     font: bold;
     font-size: 21px;
 }
-
 
 GtkButton:hover,
 #myButton_white_nospace:hover,

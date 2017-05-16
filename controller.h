@@ -26,6 +26,7 @@ GtkWidget *lastWidget;
 Field grid[9][9];
 GtkWidget *dialog;
 GtkContainer *container;
+bool autosave;
 
 
 int getI(int nr);
@@ -40,6 +41,8 @@ void on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
 void quit( GtkWidget *widget, gpointer user_data);
 void createNewGame( GtkWidget *widget, gpointer numOfFields);
 void loadGame( GtkWidget *widget, gpointer user_data);
+void saveGame( GtkWidget *widget, gpointer user_data);
+void toggle( GtkWidget *widget, gpointer user_data);
 
 void setKeyNumber(guint keyval);
 
