@@ -31,7 +31,9 @@ _label_update(gpointer data)
     memset(&buf, 0x0, 256);
     ++sec_expired;
     gameTime = sec_expired;
-    snprintf(buf, 255, "Time elapsed: %d secs", gameTime/2);
+    char lessThanTen[2] = ":";
+    if((gameTime/2)%60 < 10 ) strcpy(lessThanTen, ":0");
+    snprintf(buf, 255, "Time elapsed: %d%s%d",(gameTime/120), lessThanTen, (gameTime/2)%60);
     gtk_label_set_label(label, buf);
     return continue_timer;
 
