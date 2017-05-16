@@ -217,3 +217,11 @@ void quit( GtkWidget *widget, gpointer user_data){
     gridToFile(name);
     exit(0);
 }
+
+void createNewGame( GtkWidget *widget, gpointer numOfFields){
+    int num = GPOINTER_TO_INT(numOfFields);
+}
+
+void loadGame( GtkWidget *widget, gpointer user_data){
+    
+}

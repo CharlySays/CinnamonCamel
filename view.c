@@ -156,10 +156,14 @@ GtkWidget* createMenu(){
   
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(newGameMi), newGameMenu);
     gtk_menu_shell_append(GTK_MENU_SHELL(newGameMenu), easyMi);
+    g_signal_connect(G_OBJECT(easyMi), "activate", G_CALLBACK(createNewGame), GINT_TO_POINTER(50));
     gtk_menu_shell_append(GTK_MENU_SHELL(newGameMenu), mediumMi);
+    g_signal_connect(G_OBJECT(mediumMi), "activate", G_CALLBACK(createNewGame), GINT_TO_POINTER(30));
     gtk_menu_shell_append(GTK_MENU_SHELL(newGameMenu), hardMi);
+    g_signal_connect(G_OBJECT(hardMi), "activate", G_CALLBACK(createNewGame), GINT_TO_POINTER(20));
     GtkWidget *sep = gtk_separator_menu_item_new();  
     loadGameMi = gtk_menu_item_new_with_label("Load Game");
+    g_signal_connect(G_OBJECT(loadGameMi), "activate", G_CALLBACK(loadGame), NULL);
 
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(gameMi), gameMenu);
     gtk_menu_shell_append(GTK_MENU_SHELL(gameMenu), newGameMi);

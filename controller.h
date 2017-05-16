@@ -38,6 +38,8 @@ void callback( GtkWidget *widget, gpointer nr);
 void on_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
 void on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
 void quit( GtkWidget *widget, gpointer user_data);
+void createNewGame( GtkWidget *widget, gpointer numOfFields);
+void loadGame( GtkWidget *widget, gpointer user_data);
 
 void setKeyNumber(guint keyval);
 
