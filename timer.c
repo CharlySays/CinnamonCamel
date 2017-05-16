@@ -12,7 +12,7 @@ static gboolean continue_timer = FALSE;
 static gboolean start_timer = FALSE;
 
 /* Display seconds expired */
-static int sec_expired = -1;
+int sec_expired;
 
 static void
 _quit_cb (GtkWidget *button, gpointer data)

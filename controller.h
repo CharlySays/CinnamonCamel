@@ -28,7 +28,7 @@ GtkWidget *dialog, *entry;
 GtkContainer *container;
 bool autosave;
 bool hints;
-int numberFields;
+int numberFields, sec_expired, gameTime;
 
 
 int getI(int nr);

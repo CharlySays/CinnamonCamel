@@ -267,12 +267,16 @@ void newGrid(){
     
     for ( int i = 0; i < 9; i++) {
 	for (int j = 0; j < 9; j++) {
+            setCurrentNumber(grid[i][j].button, (i*10)+1+j);
+            g_print("%i ", grid[i][j].value);
             char temp[50] = "myButton_white_";
             strcat(temp, grid[i][j].normalState);
             if (!grid[i][j].fixed ) strcat(temp, "_lock");
             gtk_widget_set_name(grid[i][j].button, temp);
-            setCurrentNumber(grid[i][j].button, (i*10)+1+j);
             gtk_button_set_label(GTK_BUTTON(grid[i][j].button), grid[i][j].show);
         }
+        g_print("\n");
     }
+    sec_expired = 0; 
+    gameTime = 0;
 }
