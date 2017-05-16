@@ -23,7 +23,7 @@ extern Field grid[9][9];
 extern char name[256];
 extern int gameTime;
 extern GtkContainer *container;
-extern bool autosave;
+extern bool autosave, hints;
 
 #endif /* GLOBAL_H */
 

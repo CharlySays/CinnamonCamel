@@ -229,11 +229,24 @@ void saveGame( GtkWidget *widget, gpointer user_data){
     gridToFile(name);
 }
 
-void toggle( GtkWidget *widget, gpointer user_data){
+void toggleSave( GtkWidget *widget, gpointer user_data){
     if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
         autosave = true;
     } 
     else {
         autosave = false;
+    }
+}
+
+void toggleHints( GtkWidget *widget, gpointer user_data){
+    int x = getI(GPOINTER_TO_INT(last));
+    int y = getJ(GPOINTER_TO_INT(last));
+    if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget))) {
+        hints = true;
+        setCorresponding(x, y, grid[x][y].value);
+    } 
+    else {
+        hints = false;
+        setCorresponding(x, y, 0);
     }
 }

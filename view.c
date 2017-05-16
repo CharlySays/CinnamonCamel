@@ -31,7 +31,7 @@ void setStyleClicked(int x, int y, bool clicked){
     if(grid[x][y].fixed) strcat(style, "_lock");
     if(clicked) strcat(style, "_clicked");
     
-    setCorresponding(x, y, grid[x][y].value);
+    if(hints) setCorresponding(x, y, grid[x][y].value);
     gtk_widget_set_name(grid[x][y].button, style);
 }
 
@@ -45,7 +45,7 @@ void setCurrentNumber(GtkWidget *widget, int nr){
         grid[x][y].value=GPOINTER_TO_INT(nr)/10;
         strcpy(grid[x][y].show, newLabel);
         
-        setCorresponding(x, y, grid[x][y].value);
+        if(hints) setCorresponding(x, y, grid[x][y].value);
         gtk_button_set_label(GTK_BUTTON(lastWidget), newLabel);
     }
     if(autosave) gridToFile(name);
@@ -182,18 +182,23 @@ GtkWidget* createMenu(){
     
     GtkWidget *optionsMenu;
     GtkWidget *optionMi;
-    GtkWidget *autosaveMi;
+    GtkWidget *autosaveMi, *hintsMi;
     
     optionsMenu = gtk_menu_new();
     optionMi = gtk_menu_item_new_with_label("Options");
     autosaveMi = gtk_check_menu_item_new_with_label("Auto save");
+    hintsMi = gtk_check_menu_item_new_with_label("Hints");
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(optionMi), optionsMenu);
     gtk_menu_shell_append(GTK_MENU_SHELL(optionsMenu), autosaveMi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(optionsMenu), hintsMi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menubar), optionMi);
     
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(autosaveMi), TRUE);
-    g_signal_connect(G_OBJECT(autosaveMi), "activate", G_CALLBACK(toggle), NULL);
+    gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(hintsMi), TRUE);
+    g_signal_connect(G_OBJECT(autosaveMi), "activate", G_CALLBACK(toggleSave), NULL);
+    g_signal_connect(G_OBJECT(hintsMi), "activate", G_CALLBACK(toggleHints), NULL);
     autosave = true;
+    hints = true;
     
     return menubar;
 }

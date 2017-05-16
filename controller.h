@@ -27,6 +27,7 @@ Field grid[9][9];
 GtkWidget *dialog;
 GtkContainer *container;
 bool autosave;
+bool hints;
 
 
 int getI(int nr);
@@ -42,7 +43,8 @@ void quit( GtkWidget *widget, gpointer user_data);
 void createNewGame( GtkWidget *widget, gpointer numOfFields);
 void loadGame( GtkWidget *widget, gpointer user_data);
 void saveGame( GtkWidget *widget, gpointer user_data);
-void toggle( GtkWidget *widget, gpointer user_data);
+void toggleSave( GtkWidget *widget, gpointer user_data);
+void toggleHints( GtkWidget *widget, gpointer user_data);
 
 void setKeyNumber(guint keyval);
 
