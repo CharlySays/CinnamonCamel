@@ -279,7 +279,6 @@ void newGrid(){
     }
     sec_expired = 0; 
     gameTime = 0;
-    gridToFile(name);
 }
 
 void resetGame(GtkWidget *widget, gpointer user_data){
@@ -294,5 +293,6 @@ void resetGame(GtkWidget *widget, gpointer user_data){
     }
     sec_expired = 0; 
     gameTime = 0;
+    gridToFile(name);
 }
 
