@@ -47,6 +47,7 @@ void saveGame( GtkWidget *widget, gpointer user_data);
 void toggleSave( GtkWidget *widget, gpointer user_data);
 void toggleHints( GtkWidget *widget, gpointer user_data);
 void newGrid();
+void resetGame(GtkWidget *widget, gpointer user_data);
 
 void setKeyNumber(guint keyval);
 

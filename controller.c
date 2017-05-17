@@ -280,3 +280,16 @@ void newGrid(){
     sec_expired = 0; 
     gameTime = 0;
 }
+
+void resetGame(GtkWidget *widget, gpointer user_data){
+    for(int i=0;i<9;i++){
+        for(int j=0;j<9;j++){
+            if(!grid[i][j].fixed){
+                grid[i][j].value = 0;
+                strcpy(grid[i][j].show,"");
+                gtk_button_set_label(GTK_BUTTON(grid[i][j].button), grid[i][j].show);
+            }
+        }
+    }
+}
+
