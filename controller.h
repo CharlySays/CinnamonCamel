@@ -24,7 +24,7 @@
 gpointer last;
 GtkWidget *lastWidget;
 Field grid[9][9];
-GtkWidget *dialog, *entry;
+GtkWidget *dialog, *entry, *window;
 GtkContainer *container;
 bool autosave;
 bool hints;

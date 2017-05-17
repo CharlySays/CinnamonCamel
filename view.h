@@ -24,7 +24,7 @@ GtkWidget *lastWidget;
 Field grid[9][9];
 char name[256];
 int gameTime;
-GtkWidget *dialog, *entry, *label;
+GtkWidget *dialog, *entry, *label, *window;
 GtkContainer *container;
 bool autosave;
 bool hints;

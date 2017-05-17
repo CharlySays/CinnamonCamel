@@ -103,8 +103,7 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
   g_timeout_add_seconds(1, _label_update, label);
   gtk_grid_attach(GTK_GRID (gtkGrid), label, 0, -1, 3,1);
   
-  int nr=1;
-  while(grid[getI(nr)][getJ(nr)].fixed) nr++;
+  int nr=45;
   
   lastWidget = grid[getI(nr)][getJ(nr)].button;
   last = GINT_TO_POINTER(nr);

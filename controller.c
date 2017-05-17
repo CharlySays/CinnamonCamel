@@ -196,7 +196,7 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
 
             strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
         
-            readGridWithFile(strcat(name,".txt"),30);
+            readGridWithFile(strcat(name,".save"),30);
             myCss();
             fill_grid_with_buttons(mygrid);
         
@@ -211,7 +211,7 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
         }
         else{
             strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
-            strcat(name,".txt"),30;
+            strcat(name,".save"),30;
             newGrid();
             gtk_widget_hide(dialog);
         }
@@ -233,7 +233,48 @@ void createNewGame( GtkWidget *widget, gpointer numOfFields){
 }
 
 void loadGame( GtkWidget *widget, gpointer user_data){
+    GtkWidget *dialogLoad;
+    GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
+    gint res;
     
+    dialogLoad = gtk_file_chooser_dialog_new ("Open File",
+                                      GTK_WINDOW(window),
+                                      action,
+                                      ("_Cancel"),
+                                      GTK_RESPONSE_CANCEL,
+                                      ("_Open"),
+                                      GTK_RESPONSE_ACCEPT,
+                                      NULL);
+    
+    res = gtk_dialog_run (GTK_DIALOG (dialogLoad));
+    if (res == GTK_RESPONSE_ACCEPT)
+    {
+        GtkFileChooser *chooser;
+        char *filename;
+        chooser = GTK_FILE_CHOOSER (dialogLoad);        
+        filename = gtk_file_chooser_get_filename (chooser);
+        strcpy(name, filename);
+
+        readGridWithFile(name, 0);
+        
+        for ( int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                setCurrentNumber(grid[i][j].button, (i*10)+1+j);
+                g_print("%i ", grid[i][j].value);
+                if(grid[i][j].value == 0) strcpy(grid[i][j].show, " ");
+                char temp[50] = "myButton_white_";
+                strcat(temp, grid[i][j].normalState);
+                if (!grid[i][j].fixed ) strcat(temp, "_lock");
+                gtk_widget_set_name(grid[i][j].button, temp);
+                gtk_button_set_label(GTK_BUTTON(grid[i][j].button), grid[i][j].show);
+            }
+            g_print("\n");
+        }
+        
+        g_free (filename);
+    }
+
+    gtk_widget_destroy (dialogLoad);
 }
 
 void saveGame( GtkWidget *widget, gpointer user_data){
