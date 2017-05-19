@@ -1,3 +1,6 @@
+#ifndef LOGIC_H
+#define LOGIC_H
+
 #include "grid.h"
 
 bool culCheck(Field grid[][9]);
@@ -9,3 +12,5 @@ bool culCheckField(Field grid[][9],int x, int y);
 bool rowCheckField(Field grid[][9], int x, int y);
 
 bool winCondition(Field grid[][9]);
+
+#endif /* LOGIC_H */

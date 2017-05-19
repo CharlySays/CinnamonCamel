@@ -1,14 +1,12 @@
-#ifndef grid_h
-#define grid_h
+#ifndef GRID_H
+#define GRID_H
 
-#include "grid.h"
 #include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include "util.h"
 #include <math.h>
 #include <gtk/gtk.h>
 
+#include "util.h"
 
 typedef struct{
     int value;
@@ -27,4 +25,4 @@ char* itoa(int value, char* result, int base);
 bool insertValue(Field grid[][9], int value, int X, int Y);
 bool isfixed(Field grid[][9], int X, int Y);
 
-#endif
+#endif /* GRID_H */

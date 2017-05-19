@@ -1,4 +1,6 @@
-#include "grid.h"
+#ifndef GAMEMANAGEMENT_H
+#define GAMEMANAGEMENT_H
+
 #include "generator.h"
 #include "global.h"
 
@@ -9,3 +11,5 @@ int gameTime;
 
 void gridToFile(char* fileName);
 bool readGridWithFile(char *fileName, int numberOfFields);
+
+#endif /* GAMEMANAGEMENT_H */

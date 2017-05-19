@@ -26,6 +26,7 @@ GtkWidget *lastWidget, *window;
 Field grid[9][9];
 char name[256];
 int numberFields;
+bool windowOpen;
 
 int main (int    argc, char **argv)
 {
@@ -53,10 +54,11 @@ static void activate (GtkApplication* app,gpointer user_data)
     int e;
     struct stat sb;
     char *name = ".gamefiles";
-
+    
     e = stat(name, &sb);
     if (e != 0) mkdir(name, S_IRWXU);
-
+    
+    windowOpen = false;
     createDialog(window);
 }
 

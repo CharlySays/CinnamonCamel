@@ -1,16 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   global.h
- * Author: nils
- *
- * Created on May 9, 2017, 5:05 PM
- */
-
 #ifndef GLOBAL_H
 #define GLOBAL_H
 

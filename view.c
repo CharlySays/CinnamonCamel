@@ -117,7 +117,6 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
 void createDialog(GtkWidget *parent){
     
     GtkWidget *label;
-    windowOpen = false;
     dialog = gtk_dialog_new();
     gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
     entry = gtk_entry_new();

@@ -1,3 +1,6 @@
+#ifndef GENERATOR_H
+#define GENERATOR_H
+
 #include "logic.h"
 #include "global.h"
 
@@ -11,3 +14,5 @@ void removeNNumbers( int numbers);
 void prepareForGUI();
 void generateGrid(int numFields);
 int isValid(int row, int column, int number);
+
+#endif /* GENERATOR_H */
