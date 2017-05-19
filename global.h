@@ -4,13 +4,38 @@
 #include "grid.h"
 #include <gtk/gtk.h>
 
-extern gpointer last;
-extern GtkWidget *lastWidget, *entry, *dialog, *label, *window;
-extern Field grid[9][9];
-extern char name[256];
-extern int gameTime, numberFields, sec_expired;
-extern GtkContainer *container;
-extern bool autosave, hints, windowOpen;
+/*****          
+                This Header includes all shared global variables        
+                Therefore is in front of the variables an "extern".
+                It allows to access this variables from anywhere else
+                if this header is included
+                                                                        *****/
+
+extern gpointer last;               // Id from the last clicked/pressed unit
+
+extern GtkWidget *lastWidget;       // Pointer on the last clicked/pressed
+                                    // unit
+extern GtkWidget *entry;            // Pointer on the read-in entry-widget
+extern GtkWidget *dialog;           // Pointer on the dialog where the entry-
+                                    // widget is shown
+extern GtkWidget *label;            // Pointer on the timer-label
+extern GtkWidget *window;           // Pointer on the game-window
+
+extern GtkContainer *container;     // Pointer on the container where all
+                                    // graphical items are stored
+
+extern Field grid[9][9];            // Sudoku grid
+
+extern char name[256];              // Sudoku file name
+
+extern int gameTime;                // Timer * 2
+extern int numberFields;            // Number of generated values in a new
+                                    // sudoku
+extern int sec_expired;             // Access the Timer
+
+extern bool autosave;               // Allow or forbid automated saving
+extern bool hints;                  // Allow or forbid automated hints
+extern bool windowOpen;             // Store whether the window is open or not
 
 #endif /* GLOBAL_H */
 
