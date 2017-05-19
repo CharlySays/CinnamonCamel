@@ -8,8 +8,6 @@
       <itemPath>gameManagement.h</itemPath>
       <itemPath>generator.h</itemPath>
       <itemPath>global.h</itemPath>
-      <itemPath>grid.h</itemPath>
-      <itemPath>logic.h</itemPath>
       <itemPath>util.h</itemPath>
       <itemPath>view.h</itemPath>
     </logicalFolder>
@@ -23,8 +21,6 @@
       <itemPath>controller.c</itemPath>
       <itemPath>gameManagement.c</itemPath>
       <itemPath>generator.c</itemPath>
-      <itemPath>grid.c</itemPath>
-      <itemPath>logic.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>timer.c</itemPath>
       <itemPath>util.c</itemPath>
@@ -74,14 +70,6 @@
       </item>
       <item path="global.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="grid.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="grid.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="logic.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="logic.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="timer.c" ex="false" tool="0" flavor2="0">
@@ -129,14 +117,6 @@
       <item path="generator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="global.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="grid.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="grid.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="logic.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="logic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>

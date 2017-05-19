@@ -38,8 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/controller.o \
 	${OBJECTDIR}/gameManagement.o \
 	${OBJECTDIR}/generator.o \
-	${OBJECTDIR}/grid.o \
-	${OBJECTDIR}/logic.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/timer.o \
 	${OBJECTDIR}/util.o \
@@ -84,16 +82,6 @@ ${OBJECTDIR}/generator.o: generator.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/generator.o generator.c
-
-${OBJECTDIR}/grid.o: grid.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/grid.o grid.c
-
-${OBJECTDIR}/logic.o: logic.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/logic.o logic.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}

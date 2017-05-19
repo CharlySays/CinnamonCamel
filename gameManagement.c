@@ -56,10 +56,8 @@ bool readGridWithFile(char *fileName, int numberOfFields){
             }
             if(atoi(temp) != 0){
                 grid[i][j].fixed = true;
-                grid[i][j].correct = true;
             }else{
                 grid[i][j].fixed = false;
-                grid[i][j].correct = false;
             }
         }
     }
