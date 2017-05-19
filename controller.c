@@ -237,6 +237,7 @@ void createNewGame( GtkWidget *widget, gpointer numOfFields){
 
 void loadGame( GtkWidget *widget, gpointer user_data){
     GtkWidget *dialogLoad;
+    GtkFileFilter *filter;
     GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
     gint res;
     
@@ -249,6 +250,11 @@ void loadGame( GtkWidget *widget, gpointer user_data){
                                       GTK_RESPONSE_ACCEPT,
                                       NULL);
     
+    gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(dialogLoad), ".gamefiles/");
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, "Savings");
+    gtk_file_filter_add_pattern(GTK_FILE_FILTER(filter), "*.save");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialogLoad), GTK_FILE_FILTER(filter));
     res = gtk_dialog_run (GTK_DIALOG (dialogLoad));
     if (res == GTK_RESPONSE_ACCEPT)
     {
