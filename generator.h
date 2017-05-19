@@ -7,7 +7,7 @@
  * 
  * 
  *                          GLOBAL VARIABLES    
-                
+                    further information in global.h 
  
                                                                         *****/
 gpointer last;
