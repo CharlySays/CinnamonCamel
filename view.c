@@ -48,7 +48,11 @@ void setCurrentNumber(GtkWidget *widget, int nr){
         if(hints) setCorresponding(x, y, grid[x][y].value);
         gtk_button_set_label(GTK_BUTTON(lastWidget), newLabel);
     }
-    if(autosave) gridToFile(name);
+    if(autosave){
+        char dir[256] = ".gamefiles/";
+        strcat(dir, name);
+        gridToFile(dir);
+    }
 }
 
 void fill_grid_with_buttons(GtkWidget *gtkGrid) 

@@ -195,8 +195,9 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
             mygrid = gtk_grid_new();
 
             strcpy(name, gtk_entry_get_text(GTK_ENTRY(widget)));
-        
-            readGridWithFile(strcat(name,".save"),30);
+            char dir[256] = ".gamefiles/";
+            strcat(dir, strcat(name, ".save"));
+            readGridWithFile(dir,30);
             myCss();
             fill_grid_with_buttons(mygrid);
         
@@ -224,7 +225,11 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
 
 void quit( GtkWidget *widget, gpointer user_data){
     if(!windowOpen){
-        if(autosave)gridToFile(name);
+        if(autosave){
+            char dir[256] = ".gamefiles/";
+            strcat(dir, name);
+            gridToFile(dir);
+        }
         exit(0);   
     }
 }
@@ -262,9 +267,8 @@ void loadGame( GtkWidget *widget, gpointer user_data){
         char *filename;
         chooser = GTK_FILE_CHOOSER (dialogLoad);        
         filename = gtk_file_chooser_get_filename (chooser);
-        strcpy(name, filename);
 
-        readGridWithFile(name, 0);
+        readGridWithFile(filename, 0);
         
         for ( int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -287,7 +291,9 @@ void loadGame( GtkWidget *widget, gpointer user_data){
 }
 
 void saveGame( GtkWidget *widget, gpointer user_data){
-    gridToFile(name);
+    char dir[256] = ".gamefiles/";
+    strcat(dir, name);
+    gridToFile(dir);
 }
 
 void toggleSave( GtkWidget *widget, gpointer user_data){
@@ -343,6 +349,8 @@ void resetGame(GtkWidget *widget, gpointer user_data){
     }
     sec_expired = 0; 
     gameTime = 0;
-    gridToFile(name);
+    char dir[256] = ".gamefiles/";
+    strcat(dir, name);
+    gridToFile(dir);
 }
 

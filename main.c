@@ -13,11 +13,10 @@
 /** further information in global.h  **/
 
 gpointer last;
-GtkWidget *lastWidget, *window;
-Field grid[9][9];
-char name[256];
+GtkWidget *window;
 int numberFields;
 bool windowOpen;
+char name[256];
 
 /*****  ENDING GLOBAL VARIABLES *****/
 
@@ -68,7 +67,7 @@ int main (int    argc, char **argv)
 
 static void activate (GtkApplication* app,gpointer user_data)
 {
-    /*  Create a new window which will be showed.  
+    /*  Create a new window which will be shown.  
         This is a important step.
         Away from the console - to the Graphical User Interface (GUI)   */
     
@@ -83,20 +82,22 @@ static void activate (GtkApplication* app,gpointer user_data)
     struct stat sb;                         // Represents file/directory 
                                             // information
     int status;                             // Status
-    char *name = ".gamefiles";              // Secret directory name
+    char *dir = ".gamefiles";               // Secret directory name
                                             // Secret: . (dot) before the name 
                                             // hides the directory
     
     /*  Look up whether there is a directory with this name */
     
-    status = stat(name, &sb);        
+    status = stat(dir, &sb);        
     
     /*  If no directory with this name was found    */
     
     if (status != 0){
-        mkdir(name, S_IRWXU);               // Create a new directory 
+        mkdir(dir, S_IRWXU);               // Create a new directory 
                                             // .gamefiles for the game files
     }
+    
+    strcpy(name, dir);
     
     /*  Create a new Dialog to read-in game file name   */
     
