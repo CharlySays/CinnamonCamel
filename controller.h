@@ -1,7 +1,6 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-#include "grid.h"
 #include "gameManagement.h"
 
 /*****  
@@ -279,4 +278,3 @@ void toggleSave( GtkWidget *widget, gpointer user_data);
 void toggleHints( GtkWidget *widget, gpointer user_data);
 
 #endif /* CONTROLLER_H */
-

@@ -133,7 +133,7 @@ void createDialog(GtkWidget *parent){
     gtk_widget_show_all(dialog);
 }
 
-GtkWidget* createMenu(){
+GtkWidget* createMenu(void){
     GtkWidget *menubar;
     GtkWidget *fileMenu;
     GtkWidget *fileMi;

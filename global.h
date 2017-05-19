@@ -1,8 +1,10 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#include "grid.h"
+#include <stdlib.h>
+#include <math.h>
 #include <gtk/gtk.h>
+#include "util.h"
 
 /*****          
                 This Header includes all shared global variables        
@@ -10,6 +12,19 @@
                 It allows to access this variables from anywhere else
                 if this header is included
                                                                         *****/
+
+/*****                  GLOBAL STRUCTURE TO STORE SUDOKU                *****/
+
+typedef struct{
+    int value;                  // unit value
+    char show[10];              // for Graphical User Interface
+    bool fixed;                 // System set field?
+    char normalState[100];      // For the .css style
+    GtkWidget* button;          // every unit is a button
+}Field;
+
+/*****
+                        GLOBAL VARIABLES                                *****/
 
 extern gpointer last;               // Id from the last clicked/pressed unit
 
@@ -38,4 +53,3 @@ extern bool hints;                  // Allow or forbid automated hints
 extern bool windowOpen;             // Store whether the window is open or not
 
 #endif /* GLOBAL_H */
-

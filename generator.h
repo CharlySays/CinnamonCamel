@@ -1,7 +1,6 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-#include "logic.h"
 #include "global.h"
 
 /*****  
