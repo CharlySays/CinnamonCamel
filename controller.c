@@ -207,6 +207,7 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
             gtk_container_add(GTK_CONTAINER(vbox), mygrid);
 
             gtk_widget_show_all (GTK_WIDGET(user_data));
+            windowOpen = true;
             gtk_widget_hide(dialog);
         }
         else{
@@ -222,8 +223,10 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
 }
 
 void quit( GtkWidget *widget, gpointer user_data){
-    if(autosave)gridToFile(name);
-    exit(0);
+    if(!windowOpen){
+        if(autosave)gridToFile(name);
+        exit(0);   
+    }
 }
 
 void createNewGame( GtkWidget *widget, gpointer numOfFields){

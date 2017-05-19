@@ -26,8 +26,7 @@ GtkWidget *lastWidget;
 Field grid[9][9];
 GtkWidget *dialog, *entry, *window;
 GtkContainer *container;
-bool autosave;
-bool hints;
+bool autosave, hints, windowOpen;
 int numberFields, sec_expired, gameTime;
 
 

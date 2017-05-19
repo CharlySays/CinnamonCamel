@@ -22,15 +22,18 @@ void gridToFile(char* fileName){
     
     strcat(output,itoa(gameTime,temp,10));
     
-    FILE *myFile = fopen(fileName,"w");
+    char path[256] = ".gamefiles/";
+    strcat(path, fileName);
+    FILE *myFile = fopen(path,"w");
     fputs(output,myFile);
     fclose(myFile);
 }
 
 bool readGridWithFile(char *fileName, int numberOfFields){
     //read file into array
-    
-    FILE *myFile = fopen(fileName, "r+");
+    char path[256] = ".gamefiles/";
+    strcat(path, fileName);
+    FILE *myFile = fopen(path, "r+");
     if(myFile == NULL) //if file does not exist, create it
     {
        myFile = fopen(name, "wb");

@@ -26,8 +26,7 @@ char name[256];
 int gameTime;
 GtkWidget *dialog, *entry, *label, *window;
 GtkContainer *container;
-bool autosave;
-bool hints;
+bool autosave, hints, windowOpen;
 
 void myCss(void);
 void setStyleClicked(int x, int y, bool clicked);

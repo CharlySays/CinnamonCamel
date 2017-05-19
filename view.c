@@ -117,7 +117,7 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
 void createDialog(GtkWidget *parent){
     
     GtkWidget *label;
-    
+    windowOpen = false;
     dialog = gtk_dialog_new();
     gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent));
     entry = gtk_entry_new();
@@ -125,6 +125,7 @@ void createDialog(GtkWidget *parent){
     gtk_window_set_title (GTK_WINDOW (dialog), "Spielname");
     
     g_signal_connect (G_OBJECT (entry), "key_press_event", G_CALLBACK (on_press), parent);
+    g_signal_connect_swapped (G_OBJECT (dialog), "destroy", G_CALLBACK(quit), dialog);
 
     gtk_widget_show_all(dialog);
 }

@@ -11,12 +11,9 @@
  * Created on April 5, 2017, 8:21 PM
  */
 
-#include "timer.c"
-#include <stdio.h>
-#include <stdlib.h>
-#include <gtk/gtk.h>
-#include <gdk/gdkkeysyms.h>
-
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #include "view.h"
 #include "global.h"
@@ -49,10 +46,17 @@ int main (int    argc, char **argv)
 
 static void activate (GtkApplication* app,gpointer user_data)
 {
-  
-  window = gtk_application_window_new (app);
+    window = gtk_application_window_new (app);
 
-  gtk_window_set_icon(GTK_WINDOW(window), create_pixbuf("icon"));
-  createDialog(window);
+    gtk_window_set_icon(GTK_WINDOW(window), create_pixbuf("icon"));
+
+    int e;
+    struct stat sb;
+    char *name = ".gamefiles";
+
+    e = stat(name, &sb);
+    if (e != 0) mkdir(name, S_IRWXU);
+
+    createDialog(window);
 }
 
