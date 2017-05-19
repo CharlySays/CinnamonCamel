@@ -224,7 +224,7 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
 }
 
 void quit( GtkWidget *widget, gpointer user_data){
-    if(!windowOpen){
+    if(!windowOpen || widget != NULL ){
         if(autosave){
             char dir[256] = ".gamefiles/";
             strcat(dir, name);
