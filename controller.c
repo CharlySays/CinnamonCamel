@@ -176,10 +176,10 @@ bool checkFilled(){
 }
 
 bool checkValid(){
-    for(int row = 0; row < row ; row++){
+    for(int row = 0; row < 9 ; row++){
         for(int col = 0; col < 9; col++){
             if(!isValid(row,col, grid[row][col].value)){
-                printf("row %d col %d seems wrong", row, col);
+                g_print("row %d col %d seems wrong with %i", row, col, grid[row][col].value);
                 return false;
             }
         }
