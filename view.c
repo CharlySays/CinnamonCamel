@@ -240,7 +240,15 @@ void setCorresponding(int x, int y, int val){
     }
 }
 
+void checkResponseType(GtkDialog *widget, gint response_id){
+    switch(response_id){
+        case GTK_RESPONSE_YES: g_print("yes"); break;
+        default: /** Add closing logic**/  break;
+    }
+}
+
 void wonDialog(){
+    _pause_resume_timer(NULL, label);
     GtkWidget *won;
     GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
     won = gtk_message_dialog_new (GTK_WINDOW(window),
@@ -249,17 +257,34 @@ void wonDialog(){
                                  GTK_BUTTONS_YES_NO,
                                  NULL);
     
-    char wonTxt[256] = "Congratulation - You won the game\nin";
+    char wonTxt[256] = "Congratulation - You won the game\nin ";
     
-    strcat(wonTxt, "zeit bla bla\n");
+    char mins[3];
+    char secs[2];
+    char lessThanTen[2] = ":";
+    
+    gameTime+=2;
+    
+    if((gameTime/2)%60 < 10 ) strcpy(lessThanTen, ":0");
+    
+    itoa((gameTime/120), mins, 10);
+    
+    itoa(((gameTime/2)%60), secs, 10);
+
+    if((gameTime/2)%60 < 10 ) strcpy(lessThanTen, ":0");
+    
+    strcat(wonTxt, strcat(strcat(mins,strcat(lessThanTen, secs)), " minutes.\n"));
     
     strcat(wonTxt, "Do you want to play a new sudoku?");
     
     gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (won), wonTxt);
                                
     
-    g_signal_connect_swapped (won, "response",
-                              G_CALLBACK (gtk_widget_destroy), won);
+    g_signal_connect_swapped (won, "response", G_CALLBACK (checkResponseType), won);
+
+    gtk_dialog_run (GTK_DIALOG (won));
     
-    gtk_dialog_run(GTK_DIALOG(won));
+    
+    /*****************/
+
 }
