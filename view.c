@@ -239,3 +239,27 @@ void setCorresponding(int x, int y, int val){
         }
     }
 }
+
+void wonDialog(){
+    GtkWidget *won;
+    GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
+    won = gtk_message_dialog_new (GTK_WINDOW(window),
+                                 flags,
+                                 GTK_MESSAGE_QUESTION,
+                                 GTK_BUTTONS_YES_NO,
+                                 NULL);
+    
+    char wonTxt[256] = "Congratulation - You won the game\nin";
+    
+    strcat(wonTxt, "zeit bla bla\n");
+    
+    strcat(wonTxt, "Do you want to play a new sudoku?");
+    
+    gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (won), wonTxt);
+                               
+    
+    g_signal_connect_swapped (won, "response",
+                              G_CALLBACK (gtk_widget_destroy), won);
+    
+    gtk_dialog_run(GTK_DIALOG(won));
+}

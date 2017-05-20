@@ -156,10 +156,7 @@ void setKeyNumber(guint keyval){
     
     if(checkFilled()){
         if(checkValid()){
-            g_print("\nCongratz\n");
-        }
-        else{
-            g_print("\nBaad\n");
+            wonDialog();
         }
     }
 }
@@ -179,7 +176,6 @@ bool checkValid(){
     for(int row = 0; row < 9 ; row++){
         for(int col = 0; col < 9; col++){
             if(!isValid(row,col, grid[row][col].value)){
-                g_print("row %d col %d seems wrong with %i", row, col, grid[row][col].value);
                 return false;
             }
         }

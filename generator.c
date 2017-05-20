@@ -104,12 +104,10 @@ int isValid(int row, int column, int number) {
 	/* Check for the value in the given row and column */
 	for (iterator = 0; iterator < 9; iterator++) {
 		if (grid[iterator][column].value == number && row != iterator){
-                    g_print("x: %i\ty: %i\n", iterator, column);
                     return 0;
                 }
 			
 		if (grid[row][iterator].value == number && column != iterator){
-                    g_print("x: %i\ty: %i\n", row, iterator);
                     return 0;
                 }
 			

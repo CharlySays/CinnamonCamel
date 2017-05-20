@@ -124,4 +124,13 @@ GdkPixbuf* create_pixbuf(const gchar * filename);
 
 void setCorresponding(int x, int y, int val);
 
+/**
+ * @FUNCTION wonDialog
+ *
+ * Dialog which will be shown if the game is won
+ * 
+ */
+
+void wonDialog();
+
 #endif /* VIEW_H */
