@@ -237,6 +237,8 @@ void createNewGame( GtkWidget *widget, gpointer numOfFields){
 }
 
 void loadGame( GtkWidget *widget, gpointer user_data){
+    last = NULL;
+    lastWidget = NULL;
     GtkWidget *dialogLoad;
     GtkFileFilter *filter;
     GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
@@ -282,8 +284,11 @@ void loadGame( GtkWidget *widget, gpointer user_data){
         
         g_free (filename);
     }
-
     gtk_widget_destroy (dialogLoad);
+    
+    last = GINT_TO_POINTER(1);
+    lastWidget = grid[0][0].button;
+    setStyleClicked(0,0, true);
 }
 
 void saveGame( GtkWidget *widget, gpointer user_data){

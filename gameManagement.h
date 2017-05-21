@@ -14,7 +14,7 @@
 gpointer last;
 GtkWidget *lastWidget;
 Field grid[9][9];
-int gameTime;
+int gameTime, offset;
 
 /*****  
  * 

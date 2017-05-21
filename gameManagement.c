@@ -20,6 +20,9 @@ void gridToFile(char* fileName){
         }
     }
     
+    int time;
+    
+    offset == 2 ? gameTime : gameTime*2;
     strcat(output,itoa(gameTime,temp,10));
     
     FILE *myFile = fopen(fileName,"w");
@@ -68,6 +71,16 @@ bool readGridWithFile(char *fileName, int numberOfFields){
     }
     
     gameTime = atoi(time);
+    sec_expired = gameTime;
     
+    char timer[50] = "Time elapsed: ";
+    char gameTimeChar[20];
+    strcat(timer, itoa(gameTime/(60*offset), gameTimeChar, 10));
+    if((gameTime/offset)%60 < 10) strcat(timer, ":0");
+    else strcat(timer, ":");
+    strcat(timer, itoa((gameTime/offset)%60, gameTimeChar, 10));
+    
+    gtk_label_set_text(GTK_LABEL(label), timer);
+    g_print("%i", gameTime);
     return true;
 }

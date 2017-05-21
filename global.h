@@ -47,7 +47,7 @@ extern int gameTime;                // Timer * 2
 extern int numberFields;            // Number of generated values in a new
                                     // sudoku
 extern int sec_expired;             // Access the Timer
-extern int offset;
+extern int offset;                  // Get sure timer is running right
 
 extern bool autosave;               // Allow or forbid automated saving
 extern bool hints;                  // Allow or forbid automated hints

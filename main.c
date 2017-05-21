@@ -76,7 +76,7 @@ static void activate (GtkApplication* app,gpointer user_data)
     
     /*  Set window title    */
     
-    gtk_window_set_title(window, "Sudoku");
+    gtk_window_set_title(GTK_WINDOW(window), "Sudoku");
 
     /*  Create a icon which will be shown in the task bar   */
     
