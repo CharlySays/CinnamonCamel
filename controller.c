@@ -316,9 +316,11 @@ void toggleHints( GtkWidget *widget, gpointer user_data){
 
 void newGrid(){
     generateGrid(numberFields);
-    
+    last = NULL;
+    lastWidget = NULL;
     for ( int i = 0; i < 9; i++) {
 	for (int j = 0; j < 9; j++) {
+            g_print("\t(%i)\t", (i*10)+1+j);
             setCurrentNumber(grid[i][j].button, (i*10)+1+j);
             g_print("%i ", grid[i][j].value);
             char temp[50] = "myButton_white_";
