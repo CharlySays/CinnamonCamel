@@ -277,4 +277,17 @@ void toggleSave( GtkWidget *widget, gpointer user_data);
 
 void toggleHints( GtkWidget *widget, gpointer user_data);
 
+/**
+ * @FUNCTION checkResponseType
+ *
+ * This is a callback which destroys the widget if the responseType isn't the
+ * GTK_RESPONSE_YES. Otherwise a new game will be created
+ *       
+ * @PARAMETERS
+ * 	GtkWidget *widget       - Pointer on the element which causes this callback
+ *      gpointer response_id    - GtkResponseType
+ */
+
+void checkResponseType(GtkWidget *widget, gint response_id);
+
 #endif /* CONTROLLER_H */

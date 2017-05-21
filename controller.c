@@ -331,6 +331,9 @@ void newGrid(){
     }
     sec_expired = 0; 
     gameTime = 0;
+    last = GINT_TO_POINTER(1);
+    lastWidget = grid[0][0].button;
+    setStyleClicked(0,0, true);
 }
 
 void resetGame(GtkWidget *widget, gpointer user_data){
@@ -350,3 +353,14 @@ void resetGame(GtkWidget *widget, gpointer user_data){
     gridToFile(dir);
 }
 
+void checkResponseType(GtkWidget *widget, gint response_id){
+    switch(response_id){
+        case GTK_RESPONSE_YES:  createNewGame(widget, GINT_TO_POINTER(30)); 
+                                gameTime = 0;
+                                sec_expired = 0;
+                                _start_timer(NULL, label);
+                                gtk_widget_destroy(widget);
+                                break;
+        default: exit(0);  break;
+    }
+}

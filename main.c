@@ -14,7 +14,7 @@
 
 gpointer last;
 GtkWidget *window;
-int numberFields;
+int numberFields, offset;
 bool windowOpen;
 char name[256];
 
@@ -41,6 +41,7 @@ int main (int    argc, char **argv)
                             // Initializing some important variables
   last = NULL;              // Further information in --> global.h
   numberFields = 0;
+  offset = 2;
   windowOpen = false;
   
   /*    Create a new GTK3+ Application      */

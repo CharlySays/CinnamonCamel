@@ -15,7 +15,7 @@ gpointer last;
 GtkWidget *lastWidget, *dialog, *entry, *label, *window;
 Field grid[9][9];
 char name[256];
-int gameTime;
+int gameTime, offset;
 GtkContainer *container;
 bool autosave, hints, windowOpen;
 

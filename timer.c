@@ -3,7 +3,7 @@
 #include <gtk/gtk.h>
 
 #include "global.h"
-int gameTime;
+int gameTime, offset;
 
 /* Determines if to continue the timer or not */
 static gboolean continue_timer = FALSE;
@@ -32,8 +32,8 @@ _label_update(gpointer data)
     ++sec_expired;
     gameTime = sec_expired;
     char lessThanTen[2] = ":";
-    if((gameTime/2)%60 < 10 ) strcpy(lessThanTen, ":0");
-    snprintf(buf, 255, "Time elapsed: %d%s%d",(gameTime/120), lessThanTen, (gameTime/2)%60);
+    if((gameTime/offset)%60 < 10 ) strcpy(lessThanTen, ":0");
+    snprintf(buf, 255, "Time elapsed: %d%s%d",(gameTime/(60*offset)), lessThanTen, (gameTime/offset)%60);
     gtk_label_set_label(label, buf);
     return continue_timer;
 

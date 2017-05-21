@@ -62,10 +62,10 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
   
   char temp[50] = "Time elapsed: ";
   char gameTimeChar[20];
-  strcat(temp, itoa(gameTime/120, gameTimeChar, 10));
-  if((gameTime/2)%60 < 10) strcat(temp, ":0");
+  strcat(temp, itoa(gameTime/(60*offset), gameTimeChar, 10));
+  if((gameTime/offset)%60 < 10) strcat(temp, ":0");
   else strcat(temp, ":");
-  strcat(temp, itoa((gameTime/2)%60, gameTimeChar, 10));
+  strcat(temp, itoa((gameTime/offset)%60, gameTimeChar, 10));
   
   label = gtk_label_new(temp);
   
@@ -106,14 +106,8 @@ void fill_grid_with_buttons(GtkWidget *gtkGrid)
   }
   g_timeout_add_seconds(1, _label_update, label);
   gtk_grid_attach(GTK_GRID (gtkGrid), label, 0, -1, 3,1);
-  
-  int nr=45;
-  
-  lastWidget = grid[getI(nr)][getJ(nr)].button;
-  last = GINT_TO_POINTER(nr);
-  
-  setStyleClicked(getI(nr), getJ(nr), true);  
-  
+ 
+  setStyleClicked(0, 0, true);
   
   _start_timer(button, label);
 }
@@ -240,14 +234,7 @@ void setCorresponding(int x, int y, int val){
     }
 }
 
-void checkResponseType(GtkDialog *widget, gint response_id){
-    switch(response_id){
-        case GTK_RESPONSE_YES: g_print("yes"); break;
-        default: /** Add closing logic**/  break;
-    }
-}
-
-void wonDialog(){
+void wonDialog(GtkWidget *widget, gpointer *user_data){
     _pause_resume_timer(NULL, label);
     GtkWidget *won;
     GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
@@ -265,13 +252,13 @@ void wonDialog(){
     
     gameTime+=2;
     
-    if((gameTime/2)%60 < 10 ) strcpy(lessThanTen, ":0");
+    if((gameTime/offset)%60 < 10 ) strcpy(lessThanTen, ":0");
     
-    itoa((gameTime/120), mins, 10);
+    itoa((gameTime/(60*offset)), mins, 10);
     
-    itoa(((gameTime/2)%60), secs, 10);
+    itoa(((gameTime/offset)%60), secs, 10);
 
-    if((gameTime/2)%60 < 10 ) strcpy(lessThanTen, ":0");
+    if((gameTime/offset)%60 < 10 ) strcpy(lessThanTen, ":0");
     
     strcat(wonTxt, strcat(strcat(mins,strcat(lessThanTen, secs)), " minutes.\n"));
     
@@ -283,8 +270,4 @@ void wonDialog(){
     g_signal_connect_swapped (won, "response", G_CALLBACK (checkResponseType), won);
 
     gtk_dialog_run (GTK_DIALOG (won));
-    
-    
-    /*****************/
-
 }
