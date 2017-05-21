@@ -17,17 +17,17 @@ void generateGrid(int numFields){
     prepareForGUI();
 }
 
-
 /**
- * @FUNCTION removeNNumbers
+ * @FUNCTION prepareForGUI
  *
- * Removes N numbers from a sudoku
+ * sets a valid starting state for the grid struct, e.g. sets pregiven values as fixed, 
+ * so the user can't change those
  *
  * @PARAMETERS
- * 	int (*puzzle)[9][9] - Pointer to an array containing the current state of the Sudoku
- * 	int numbers - integer value of the amount of numbers, that are to be removed
+ * 	NONE
  *
  */
+
 
 void prepareForGUI(){
     int i,k;
@@ -44,6 +44,17 @@ void prepareForGUI(){
     }
 }
 
+
+/**
+ * @FUNCTION removeNNumbers
+ *
+ * Removes N numbers from a sudoku
+ *
+ * @PARAMETERS
+ * 	int (*puzzle)[9][9] - Pointer to an array containing the current state of the Sudoku
+ * 	int numbers - integer value of the amount of numbers, that are to be removed
+ *
+ */
 void removeNNumbers( int numbers) {
 
 	while (numbers) {
