@@ -80,7 +80,7 @@ bool readGridWithFile(char *fileName, int numberOfFields){
     else strcat(timer, ":");
     strcat(timer, itoa((gameTime/offset)%60, gameTimeChar, 10));
     
-    gtk_label_set_text(GTK_LABEL(label), timer);
+    if(label != NULL) gtk_label_set_text(GTK_LABEL(label), timer);
     g_print("%i", gameTime);
     return true;
 }
