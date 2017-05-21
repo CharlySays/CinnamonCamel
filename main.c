@@ -73,6 +73,10 @@ static void activate (GtkApplication* app,gpointer user_data)
         Away from the console - to the Graphical User Interface (GUI)   */
     
     window = gtk_application_window_new (app);
+    
+    /*  Set window title    */
+    
+    gtk_window_set_title(window, "Sudoku");
 
     /*  Create a icon which will be shown in the task bar   */
     
