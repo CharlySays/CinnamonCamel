@@ -24,12 +24,6 @@ char* itoa(int value, char* result, int base) {
         return result;
 }
 
-bool validNum(int value){
-    if(value<0||value>9){
-        return false;
-    }
-    return true;
-}
 
 int isValueInArray(int value, int *array, int size) {
 	while (size) {

@@ -21,18 +21,6 @@
 char* itoa(int value, char* result, int base);
 
 /**
- * @FUNCTION validNum
- *
- * Checks whether value is an valid sudoku number
- *
- * @PARAMETERS
- * 	int value       -   value for the sudoku unit
- *
- */
-
-bool validNum(int value);
-
-/**
  * @FUNCTION isValueInArray
  *
  * Check whether array contains value
