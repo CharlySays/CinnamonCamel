@@ -216,7 +216,7 @@ on_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data){
         
     }
     
-    else g_print("");
+    else sleep(0);
 }
 
 void quit( GtkWidget *widget, gpointer user_data){
